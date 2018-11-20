@@ -6,10 +6,8 @@ const Key = ({className, groups}) => (
 	<div className={`${styles.key} ${className}`}>
 		{Object.keys(groups).map((k, i) => (
 			<div key={i} className={styles.keyItem}>
-				<div className={styles.keyColor} style={{
-					fontSize: '5px',
-					background: groups[k].color}}></div>
-
+				<div className={styles.keyColor} style={{background: groups[k].color}}></div>
+				<span>{k}</span>
 			</div>
 			))}
 	</div>

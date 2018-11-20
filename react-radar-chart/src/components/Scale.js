@@ -39,7 +39,18 @@ function getWrapperClassName(alignment) {
 
 const Scale = ({alignment, className, color, rungs}) => (
 	<div className={getWrapperClassName(alignment)}>
-
+		<div className={getLabelClassName(alignment)}>
+			{[0, rungs].map((label, i) => <span key={i} className={styles.label}>{label}</span>)}
+		</div>
+		<div className={getScaleClassName(alignment)} style={{borderColor: color}}>
+			{Array.from({length: rungs}).map((u, i) => (
+				<div
+					key={`scale-degree-${i}`}
+					className={getScaleDegreeClassName(alignment)}
+					style={getDegreeStyle(alignment, color, rungs, i)}>
+				</div>
+			))}
+		</div>
 	</div>
 );
 

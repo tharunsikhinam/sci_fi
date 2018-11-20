@@ -25,7 +25,22 @@ function getTextPosition(angle, coordinates) {
 
 const Labels =({chartWidth, className, coordinateGroup}) => (
 	<g>
+		{coordinateGroup.map(({coordinates, name}, i) => {
+			const angle = 360 - ((360 / coordinateGroup.length) * i);
+			const {adjustedCoordinates, alignment} = getTextPosition(angle, coordinates);
 
+			return (
+				<text
+					key={`axis-label-${i}`}
+					className={className}
+					x={adjustedCoordinates[0]}
+					y={adjustedCoordinates[1]}
+					textAnchor={alignment}
+					>
+					{name}
+				</text>
+			);
+		})}
 	</g>
 );
 
