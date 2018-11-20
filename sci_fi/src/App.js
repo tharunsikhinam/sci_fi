@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import RadarChart from '/Users/studentuser/workspace/react-radar-chart'
+import RadarChart from 'react-radar-chart'
 
 
 class App extends Component {
