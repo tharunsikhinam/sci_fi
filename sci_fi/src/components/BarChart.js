@@ -261,10 +261,10 @@ class BarChart extends Component {
           datasets: [
               {
                   label: "Sci fi over the ages",
-                  backgroundColor: 'rgba(255,99,132,0.2)',
-                  borderColor: 'rgba(255,99,132,1)',
+                  backgroundColor: '#2196f3',
+                  borderColor: '#01579B',
                   borderWidth: 1,
-                  hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                  hoverBackgroundColor: '#01579B',
                   hoverBorderColor: 'rgba(255,99,132,1)',
                   data: this.state.data
               }
@@ -273,7 +273,7 @@ class BarChart extends Component {
       }
 
     return (
-        <div style={{height: '50vh'}}>
+        <div style={{height: '50vh',marginTop: '2vh'}}>
             {/*<button onClick={()=>{*/}
                 {/*if(this.state.flag)*/}
                     {/*this.setState({data: y1,flag: !this.state.flag})*/}
@@ -313,7 +313,9 @@ class BarChart extends Component {
                             display: true,
                             labelString: "Years",
                             fontColor: "#eee",
-                            fontSize: 14,
+                            fontSize: 12,
+                            paddingTop: 0,
+                            marginTop: 0,
 
                         },
                         display: true,
@@ -337,15 +339,13 @@ class BarChart extends Component {
                     }]
                 },
 
-                label: "sci fi",
-
                 hover: {
                     mode: "label",
                   intersect: true
                 },
                 title:{
-                  display: true,
-                  text: "Sci-fi"
+                  display: false,
+
                 },
                 legend: {
                     labels: {
@@ -356,8 +356,10 @@ class BarChart extends Component {
                 responsive: true,
                 maintainAspectRatio: false,
                 events: ['click','mousemove','mouseout'],
-                onHover: (event,value)=>{
-                    console.log(value);
+                onHover: (event,chartElement)=>{
+                    console.log(chartElement);
+                    event.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+
                 },
                 onClick: (event,value) => {
                     if(value.length !== 0 )

@@ -31,6 +31,10 @@ const styles = {
 
 class CardDisplay extends Component {
 
+    constructor(props)
+    {
+        super(props);
+    }
   render() {
 
       const { classes } = this.props;
@@ -60,6 +64,7 @@ class CardDisplay extends Component {
                   <Button
                   variant="contained"
                   color="secondary"
+                  onClick={this.props.onExploreClick}
                       size="large">Explore</Button>
               </CardActions>
           </Card>

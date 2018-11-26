@@ -1,37 +1,59 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import RadarChart from 'react-radar-chart'
 import SimpleAppBar from "./components/SimpleAppBar";
 import ResponsiveBarChart from "./components/ResponsiveBarChart";
 import BarChart from "./components/BarChart";
 import CardDisplay from "./components/CardDisplay";
 import Card from "@material-ui/core/es/Card/Card";
 import CardRadarChart from "./components/CardRadarChart";
+import Modal from './components/Modal'
 
 
 class App extends Component {
+
+  constructor()
+  {
+      super();
+      this.state = {sidebar: false,modal:false};
+      this.handleModalClose = this.handleModalClose.bind(this);
+      this.handleExploreClick = this.handleExploreClick.bind(this);
+
+  }
+  handleExploreClick(year)
+  {
+      console.log("itworked")
+      this.setState({modal: true})
+  }
+  handleModalClose()
+  {
+      this.setState({modal: false})
+  }
+
+
+
+
   render() {
     return (
       <div className="App">
 
+          <Modal open={this.state.modal} onClose={this.handleModalClose}/>
+
           <div id="container">
               <div id="top_div">
                   <SimpleAppBar/>
-                  <div style={{marginTop: '-20px',paddingLeft: '20px',paddingRight: '20px'}}>
-                      <BarChart/>
-                  </div>
-
-              </div>
-              <div id="bottom_div" >
                   <div style={{width: "50%",paddingTop: '20px', float:"left"}}>
-
-                      <CardDisplay/>
+                  <CardDisplay onExploreClick={this.handleExploreClick}/>
                   </div>
 
                   <div style={{width: "50%",paddingLeft: '20px',paddingTop: '20px', float:"right"}}>
 
-                      <CardRadarChart/>
+                       <CardRadarChart/>
+                  </div>
+              </div>
+              <div id="bottom_div" >
+                  <div style={{marginTop: '-20px',paddingLeft: '20px',paddingRight: '20px'}}>
+                  <BarChart/>
                   </div>
                   {/*<ResponsiveBarChart/>*/}
               </div>

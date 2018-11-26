@@ -12,12 +12,26 @@ const theme = createMuiTheme({
         type: 'dark'
     }
 });
-
 ReactDOM.render(<MuiThemeProvider theme={theme}>
-    <CssBaseline/>
-    <App />
+        <CssBaseline/>
+        <App />
     </MuiThemeProvider>
-        , document.getElementById('root'));
+    , document.getElementById('root'));
+
+if(module.hot)
+{
+    module.hot.accept("./App", ()=>{
+        const NextApp = require('./App').default
+        ReactDOM.render(<MuiThemeProvider theme={theme}>
+                <CssBaseline/>
+                <NextApp />
+            </MuiThemeProvider>
+            , document.getElementById('root'));
+    })
+
+
+}
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
