@@ -3,7 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
+    "@material-ui/styles": "^3.0.0-alpha.0",
+    "@nivo/bar": "^0.51.5",
+    "chart.js": "^2.7.3",
+    "chartjs-plugin-zoom": "^0.6.6",
     "react": "^16.6.3",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.6.3",
     "react-radar-chart": "^1.0.21",
     "react-scripts": "2.1.1"

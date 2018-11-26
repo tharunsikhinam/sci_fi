@@ -12,3 +12,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html {
+  overflow: hidden;
+}
+
+#container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#top_div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 50%;
+  background-color:inherit;
+  text-align:center;
+  color:#FFFFFF;
+}
+
+#bottom_div {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: inherit;
+  text-align:center;
+  color:#FFFFFF;
+}
