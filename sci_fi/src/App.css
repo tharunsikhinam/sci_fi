@@ -1,6 +1,22 @@
 .App {
   text-align: center;
 }
+@font-face {
+  font-family: "futura-heavy";
+  src: url("./FuturaHeavyfont.ttf")
+}
+@font-face {
+  font-family: "futura-normal";
+  src: url("./FuturaBookfont.ttf")
+}
+@font-face {
+  font-family: "futura-extra-black";
+  src: url("./FuturaExtraBlackFont.ttf")
+}
+@font-face {
+  font-family: "futura-bold-font";
+  src: url("./FuturaBoldFont.ttf")
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

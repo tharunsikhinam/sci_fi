@@ -21,11 +21,8 @@ const styles = {
         margin: '0 2px',
         transform: 'scale(0.8)',
     },
-    title: {
-        fontSize: 14,
-    },
     pos: {
-        marginBottom: 12,
+        marginBottom: 0,
     },
 };
 
@@ -44,28 +41,51 @@ class CardDisplay extends Component {
       <div >
           <Card className={classes.card}>
               <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                      Top Rated Films
+                  <Typography
+                      style={{
+                          fontFamily: "futura-heavy"
+                      }}
+                      variant="h4" component="h2" className={classes.title} color="textSecondary" gutterBottom>
+                      {this.props.yearsSelect.selected ?
+                          this.props.yearsSelect.selected :
+                          (this.props.years.selected? this.props.years.selected:null)}
                   </Typography>
-                  <Typography variant="h5" component="h2">
-                      1. Interstellar
-                      <br/>
-                      2. Something else
-                      <br/>
-                      3. And something else
-                      <br/>
+                  <Typography
+                      style={{
+                          fontFamily: "futura-normal"
+                      }}
+                      variant="h5" component="h3">
+                      {this.props.yearsSelect.selected ?
+                          <div>
+                              1. Interstellar
+                              <br/>
+                              2. Something else
+                              <br/>
+                              3. And something else
+                              <br/>
+                          </div> :
+                          (this.props.years.selected?<div>
+                              1. Interstellar
+                              <br/>
+                              2. Something else
+                              <br/>
+                              3. And something else
+                              <br/>
+                          </div> :<div>
+                              Click/Hover over a bar to explore more
+                          </div>)}
+
                   </Typography>
-                  <Typography className={classes.pos} color="textSecondary">
-                      adjective
-                  </Typography>
+
 
               </CardContent>
               <CardActions style={{justifyContent: "center"}}>
+                  {this.props.yearsSelect.selected?
                   <Button
                   variant="contained"
                   color="secondary"
                   onClick={this.props.onExploreClick}
-                      size="large">Explore</Button>
+                      size="large">Explore</Button>:null}
               </CardActions>
           </Card>
       </div>

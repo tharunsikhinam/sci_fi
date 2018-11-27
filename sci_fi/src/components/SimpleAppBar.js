@@ -28,7 +28,11 @@ class SimpleAppBar extends Component {
                   <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                       <MenuIcon onClick={this.props.handleMenuClick}/>
                   </IconButton>
-                  <Typography variant="h6"  color="inherit">
+                  <Typography variant="h6"
+                              style={{
+                                  fontFamily: "futura-extra-black"
+                              }}
+                              color="inherit">
                       Sci-Fi Through The Ages
                   </Typography>
               </Toolbar>
