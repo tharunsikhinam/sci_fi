@@ -138,8 +138,9 @@ class CardRadarChart extends Component {
                           scales: {
                               tickColor: "#eee",
                               ticks: {
+                                  min:0,
                                   display: false
-                              }
+                              },
 
                           },
                           responsive: true,
@@ -160,6 +161,7 @@ class CardRadarChart extends Component {
                                   fontColor: 'white',
                               },
                               ticks: {
+                                  min:0,
                                   display: false
                               },
                           }
