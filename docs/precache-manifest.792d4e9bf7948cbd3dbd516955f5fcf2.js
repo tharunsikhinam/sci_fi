@@ -20,6 +20,10 @@ self.__precacheManifest = [
     "url": "./static/media/logo.5d5d9eef.svg"
   },
   {
+    "revision": "eefc0fd25f76a11882e20b547c77291c",
+    "url": "./static/media/FuturaExtraBlackFont.eefc0fd2.ttf"
+  },
+  {
     "revision": "3ea9695ee3af8a5e17413f22249f361a",
     "url": "./static/media/FuturaHeavyfont.3ea9695e.ttf"
   },
@@ -30,10 +34,6 @@ self.__precacheManifest = [
   {
     "revision": "4c62644b159530ff6214336f8cfb1d32",
     "url": "./static/media/FuturaBoldFont.4c62644b.ttf"
-  },
-  {
-    "revision": "eefc0fd25f76a11882e20b547c77291c",
-    "url": "./static/media/FuturaExtraBlackFont.eefc0fd2.ttf"
   },
   {
     "revision": "abfb1ef1586af546c69aaae369172b70",
