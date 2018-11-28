@@ -1,4 +1,10 @@
-# sci_fi
+# Science Fiction Through The Ages
 
-## Website 
+A visualization project that analyzes the change in science fiction movies over the years in terms of:
+- Quantity
+- Sub-Genre breakup
+- Ratings
+- Grossing
+
+## Website Link
 https://apoorva-sh.github.io/sci_fi/
