@@ -41,7 +41,7 @@ class CardRadarChart extends Component {
 
   render() {
         var data={};
-        if(this.props.yearsSelect.selected && this.props.years.selected)
+        if(this.props.yearsSelect.selected )
         {
             data ={
                 labels: ['Alien', 'Monster', 'Space Opera', 'AI/Robot', 'Time Travel',  'Dystopian','Fantasy'],

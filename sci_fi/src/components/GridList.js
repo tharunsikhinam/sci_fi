@@ -88,13 +88,15 @@ class SimpleAppBar extends Component {
                             src={tile.img} alt={tile.title} />
                         <GridListTileBar
                             classes={{
+                                marginLeft: 5,
+                                marginRight: 5,
                                 title:{
                                   fontColor: 'black'
                                 }
                             }}
-                            title={<span style={{color: "#eee",fontSize: "0.8rem"}} color={"black"} >{tile.title}</span>}
+                            title={<span style={{color: "#eee",fontSize: "0.8rem"}}   >{tile.title}</span>}
                             subtitle={<ReactStars
-                                value={3}
+                                value={3.5}
                                 edit={false}
                             />}
                             actionIcon={

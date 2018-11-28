@@ -85,7 +85,7 @@ class BarChart extends Component {
                 scales: {
                     tickColor: "#eee",
                     xAxes: [{
-                       barPercentage: 1.2,
+                       barPercentage: 1,
                         ticks: {
                             fontColor: "white",
                             fontSize: 14,

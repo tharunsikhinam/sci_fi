@@ -83,7 +83,7 @@ class CardDisplay extends Component {
                   {this.props.yearsSelect.selected?
                   <Button
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   onClick={this.props.onExploreClick}
                       size="large">Explore</Button>:null}
               </CardActions>
