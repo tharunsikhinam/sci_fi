@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import GridList from './GridList'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl'
 import Grow from '@material-ui/core/Grow';
@@ -21,6 +21,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Fade from '@material-ui/core/Fade';
 import ReactStars from 'react-stars';
 import InfoIcon from '@material-ui/icons/Launch';
+import SearchIcon from '@material-ui/icons/Search';
 function Transition(props) {
     return <Grow in="true" {...props} />;
 }
@@ -31,6 +32,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     menuButton: {
+        width:300,
         marginLeft: -12,
         marginRight: 20,
     },
@@ -39,6 +41,7 @@ const styles = theme => ({
         borderBottomColor: "#eee"
     },
     formControl: {
+        width:300,
         margin: theme.spacing.unit,
         minWidth: 120,
     },
@@ -60,7 +63,7 @@ class Modal extends Component {
     {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {name: 'abc',tile: false, expanded:false}
+        this.state = {name: null,tile: false, expanded:false};
         this.handleChange = this.handleChange.bind(this);
         this.handleTileClick = this.handleTileClick.bind(this);
         this.handleGridClick = this.handleGridClick.bind(this);
@@ -128,40 +131,46 @@ class Modal extends Component {
                       }
                   }}
                   id="scroll-dialog-title">
-                  Sci-fi Films 1985
+                  <h1 style={{display:"inline"}}>
+                  Sci-fi Films {this.props.year}
+                  </h1>
                   <Fade in={!this.state.expanded} >
-                  <TextField
-                      id="outlined-name"
+                  <TextField                     
                       label="Search by title, actor, director"
-
                       className={classes.textField}
                       value={this.state.name}
                       onChange={this.handleChange('name')}
                       margin="normal"
                       variant="outlined"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end"><SearchIcon /></InputAdornment>
+                      }}
+                     
                   />
                   </Fade>
                   <Fade in={!this.state.expanded} >
-                      <FormControl className={classes.formControl}>
-                          <Select
+                  <div align="right">
+                      <FormControl className={classes.formControl} >
+                          <Select                           
                               autoWidth={true}
                               value={"All Movies"}
                               onChange={()=>{
 
                               }}
 
-                              name="age"
+                              align="left"
                               className={classes.selectEmpty}
                           >
-                              <MenuItem value="All Movies">
+                              <MenuItem style={{width:"300px"}} value="All Movies">
                                   All Movies
                               </MenuItem>
-                              <MenuItem value={10}>Space</MenuItem>
-                              <MenuItem value={20}>Robot</MenuItem>
-                              <MenuItem value={30}>Alien</MenuItem>
+                              <MenuItem style={{width:"300px"}} value={10}>Space</MenuItem>
+                              <MenuItem style={{width:"300px"}} value={20}>Robot</MenuItem>
+                              <MenuItem style={{width:"300px"}} value={30}>Alien</MenuItem>
                           </Select>
 
                       </FormControl>
+                      </div>
                       </Fade>
                     
 

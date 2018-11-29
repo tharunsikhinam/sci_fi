@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Launch';
 
 
 const styles = theme => ({
@@ -116,6 +112,12 @@ handleClick(src,title,author){
   
      this.props.handleGridClick(src,title,author)
 }
+handleMouseClick(e){
+    e.target.style.opacity = "1"
+}
+handleMouseLeave(e){
+    e.target.style.opacity = "0.6"
+}
   render() {
       const {classes} = this.props;
     return (
@@ -123,15 +125,15 @@ handleClick(src,title,author){
             <GridList cellHeight={200} cols={6} className={classes.gridList}>
 
                 {tileData.map(tile => (
-                    <GridListTile itemRef={this.grid} onClick={() => this.handleClick(tile.img,tile.title,tile.author,this.grid)} class="gridItem"
+                    <GridListTile  onClick={() => this.handleClick(tile.img,tile.title,tile.author)} 
                         classes={{
                             tile: {
                                 width: '100px'
                             }
                         }}
                         key={tile.img}>
-                        <img 
-                            style={{maxWidth: '100%', maxHeight: '100%'}}
+                        <img onMouseEnter={this.handleMouseClick} onMouseLeave={this.handleMouseLeave}
+                            style={{maxWidth: '93%', maxHeight: '100%',opacity:'0.6'}}
                             src={tile.img} alt={tile.title} />
                     </GridListTile>
                 ))}
