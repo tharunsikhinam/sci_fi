@@ -11,15 +11,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl'
-import Slide from '@material-ui/core/Slide';
-import Button from '@material-ui/core/Button'
-
+import Grow from '@material-ui/core/Grow';
+import Collapse from '@material-ui/core/Collapse';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Fade from '@material-ui/core/Fade';
+import ReactStars from 'react-stars';
+import InfoIcon from '@material-ui/icons/Launch';
 function Transition(props) {
-    return <Slide direction="left" {...props} />;
+    return <Grow in="true" {...props} />;
 }
-function TransitionInner(props) {
-    return <Slide direction="down" {...props} />;
-}
+
 
 const styles = theme => ({
     root: {
@@ -51,16 +56,21 @@ const styles = theme => ({
 });
 
 class Modal extends Component {
-
     constructor(props)
     {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {name: 'abc',tile: false}
+        this.state = {name: 'abc',tile: false, expanded:false}
         this.handleChange = this.handleChange.bind(this);
         this.handleTileClick = this.handleTileClick.bind(this);
+        this.handleGridClick = this.handleGridClick.bind(this);
         this.handleInnerModalClose = this.handleInnerModalClose.bind(this);
+        this.handleCloseClick = this.handleCloseClick.bind(this);
+        var title = null;
+        var author = null;
+        var src = null;
     }
+    
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
@@ -70,13 +80,30 @@ class Modal extends Component {
     {
         this.setState({tile: false})
     }
+    handleGoogleSearch(q){
+        window.open('http://google.com/search?q='+q)
+    }
     handleTileClick()
     {
         console.log("reached here");
         this.setState({tile: true})
     }
+    handleGridClick(src,title,author)
+    {
+        this.src = src;
+        this.title = title;
+        this.author = author;
+        console.log("reached grid here");
+        console.log(this.state.expanded);
+        this.setState({expanded : !this.state.expanded})
+        
+    }
+    handleCloseClick(){
+        this.setState({expanded : !this.state.expanded})
+    }
 
   render() {
+      
       const {classes} = this.props;
     return (
       <div >
@@ -102,7 +129,7 @@ class Modal extends Component {
                   }}
                   id="scroll-dialog-title">
                   Sci-fi Films 1985
-
+                  <Fade in={!this.state.expanded} >
                   <TextField
                       id="outlined-name"
                       label="Search by title, actor, director"
@@ -113,8 +140,8 @@ class Modal extends Component {
                       margin="normal"
                       variant="outlined"
                   />
-
-
+                  </Fade>
+                  <Fade in={!this.state.expanded} >
                       <FormControl className={classes.formControl}>
                           <Select
                               autoWidth={true}
@@ -135,40 +162,60 @@ class Modal extends Component {
                           </Select>
 
                       </FormControl>
+                      </Fade>
+                    
 
               </DialogTitle>
               <DialogContent aria-checked={true}>
                   <DialogContentText>
-                    <GridList handleTileClick={this.handleTileClick}/>
+                  <Collapse in={!this.state.expanded} timeout="auto" unmountOnExit>
+                    <GridList handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
+                    </Collapse>
+                    <Card>
+                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+              <p>
+          <IconButton className={classes.icon}>
+                                    <ExpandMore onClick={this.handleCloseClick}/>
+                                </IconButton>
+                                </p>
+                               
+            <div>
+            <h3>
+                Summary: <img align="right"
+                            style={{  width:"200px", borderColor: 'rgba(255,255,255,255)', border: '3px'}}
+                            src={this.src} alt={this.title} />
+                </h3>
+            <div  style={{maxWidth: '75%'}}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
+            </div>
+            
+            </div>
+            <div >
+                <h4 > Ratings: 
+            <ReactStars
+                                value={3}
+                                edit={false}
+                            />
+            
+            </h4>
+            </div>
+            <div >
+            <IconButton style={{fontSize: "11pt"}} onClick={()=> this.handleGoogleSearch(this.title)}>
+            Google Search
+                                    <InfoIcon />
+                                </IconButton>
+            </div>
+            <h2 align="right" >{this.title}</h2>
+            <h4 align="right" >
+              {this.author}
+            </h4>
+          </CardContent>
+        </Collapse>
+                        </Card>
                   </DialogContentText>
               </DialogContent>
               <DialogActions>
-
-              </DialogActions>
-          </Dialog>
-
-
-          {/*Inner DIALOG*/}
-
-          <Dialog
-              open={this.state.tile}
-              TransitionComponent={TransitionInner}
-              onClose={this.handleInnerModalClose}
-              aria-labelledby="alert-dialog-slide-title"
-              aria-describedby="alert-dialog-slide-description"
-          >
-              <DialogTitle id="alert-dialog-slide-title">
-                  {"Movie Name"}
-              </DialogTitle>
-              <DialogContent>
-                  <DialogContentText id="alert-dialog-slide-description">
-                      Summary
-                  </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                  <Button   color="primary">
-                      Watch Trailer
-                  </Button>
 
               </DialogActions>
           </Dialog>

@@ -6,7 +6,6 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Launch';
-import ReactStars from 'react-stars'
 
 
 const styles = theme => ({
@@ -66,9 +65,57 @@ const tileData=[
         img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
         title: "ABC",
         author: "CDE"
-    },]
+    }, {
+        img: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX140_CR0,0,140,209_AL_.jpg",
+        title: "Bohemian Rhapsody",
+        author: "CDE"
+    },{
+        img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
+        title: "ABC",
+        author: "CDE"
+    },{
+        img: "https://m.media-amazon.com/images/M/MV5BYzQ2ZmZjNTUtZTg5Ni00ZjYyLWI5ZDQtODA4NzZjNGE5MmFmXkEyXkFqcGdeQXVyMjAyNTEwOQ@@._V1_UY209_CR4,0,140,209_AL_.jpg",
+        title: "ABC",
+        author: "CDE"
+    },{
+        img: "https://m.media-amazon.com/images/M/MV5BMTYyNzEyNDAzOV5BMl5BanBnXkFtZTgwNTk3NDczNjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
+        title: "ABC",
+        author: "CDE"
+    },{
+        img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
+        title: "ABC",
+        author: "CDE"
+    },{
+            img: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX140_CR0,0,140,209_AL_.jpg",
+            title: "Bohemian Rhapsody",
+            author: "CDE"
+        },{
+            img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
+            title: "ABC",
+            author: "CDE"
+        },{
+            img: "https://m.media-amazon.com/images/M/MV5BYzQ2ZmZjNTUtZTg5Ni00ZjYyLWI5ZDQtODA4NzZjNGE5MmFmXkEyXkFqcGdeQXVyMjAyNTEwOQ@@._V1_UY209_CR4,0,140,209_AL_.jpg",
+            title: "ABC",
+            author: "CDE"
+        },{
+            img: "https://m.media-amazon.com/images/M/MV5BMTYyNzEyNDAzOV5BMl5BanBnXkFtZTgwNTk3NDczNjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
+            title: "ABC",
+            author: "CDE"
+        },{
+            img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
+            title: "ABC",
+            author: "CDE"
+        },]
 class SimpleAppBar extends Component {
-
+    constructor(props)
+    {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+handleClick(src,title,author){
+  
+     this.props.handleGridClick(src,title,author)
+}
   render() {
       const {classes} = this.props;
     return (
@@ -76,33 +123,16 @@ class SimpleAppBar extends Component {
             <GridList cellHeight={200} cols={6} className={classes.gridList}>
 
                 {tileData.map(tile => (
-                    <GridListTile
+                    <GridListTile itemRef={this.grid} onClick={() => this.handleClick(tile.img,tile.title,tile.author,this.grid)} class="gridItem"
                         classes={{
                             tile: {
                                 width: '100px'
                             }
                         }}
                         key={tile.img}>
-                        <img
+                        <img 
                             style={{maxWidth: '100%', maxHeight: '100%'}}
                             src={tile.img} alt={tile.title} />
-                        <GridListTileBar
-                            classes={{
-                                title:{
-                                  fontColor: 'black'
-                                }
-                            }}
-                            title={<span style={{color: "#eee",fontSize: "0.8rem"}} color={"black"} >{tile.title}</span>}
-                            subtitle={<ReactStars
-                                value={3}
-                                edit={false}
-                            />}
-                            actionIcon={
-                                <IconButton className={classes.icon}>
-                                    <InfoIcon onClick={this.props.handleTileClick}/>
-                                </IconButton>
-                            }
-                        />
                     </GridListTile>
                 ))}
             </GridList>
