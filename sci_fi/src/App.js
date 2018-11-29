@@ -60,6 +60,7 @@ class App extends Component {
   handleExploreClick(year)
   {
       console.log("itworked")
+      console.log(this.state.yearsSelect.selected);
       this.setState({modal: true})
   }
   handleModalClose()
@@ -140,7 +141,7 @@ class App extends Component {
 
 
           {/*Modal*/}
-          <Modal open={this.state.modal} onClose={this.handleModalClose}/>
+          <Modal year={this.state.yearsSelect.selected} open={this.state.modal} onClose={this.handleModalClose}/>
 
           {/*Drawer*/}
           <Drawer open={this.state.drawer} onClose={this.toggleDrawer}>
