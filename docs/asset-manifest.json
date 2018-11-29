@@ -8,9 +8,11 @@
   "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
   "static/media/index.css": "./static/media/FuturaBookfont.f9f02ed0.ttf",
   "static/media/logo.svg": "./static/media/logo.5d5d9eef.svg",
-  "static/media/App.css": "./static/media/FuturaExtraBlackFont.eefc0fd2.ttf",
-  "static/css/main.52b14c2f.chunk.css.map": "./static/css/main.52b14c2f.chunk.css.map",
+
+  "static/media/App.css": "./static/media/FuturaBoldFont.4c62644b.ttf",
+  "static/css/main.2c1f952a.chunk.css.map": "./static/css/main.2c1f952a.chunk.css.map",
   "index.html": "./index.html",
-  "precache-manifest.38d6f2b1958a7a9e844ddb6690d002d0.js": "./precache-manifest.38d6f2b1958a7a9e844ddb6690d002d0.js",
+  "precache-manifest.792d4e9bf7948cbd3dbd516955f5fcf2.js": "./precache-manifest.792d4e9bf7948cbd3dbd516955f5fcf2.js",
+
   "service-worker.js": "./service-worker.js"
 }
