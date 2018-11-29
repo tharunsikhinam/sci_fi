@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-
+import ReactStars from 'react-stars'
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 const styles = theme => ({
     root: {
@@ -133,8 +134,22 @@ handleMouseLeave(e){
                         }}
                         key={tile.img}>
                         <img onMouseEnter={this.handleMouseClick} onMouseLeave={this.handleMouseLeave}
-                            style={{maxWidth: '93%', maxHeight: '100%',opacity:'0.6'}}
+                            style={{maxWidth: '100%', maxHeight: '100%',opacity:'0.6'}}
                             src={tile.img} alt={tile.title} />
+                            <GridListTileBar
+                            classes={{
+                                marginLeft: 5,
+                                marginRight: 5,
+                                title:{
+                                  fontColor: 'black'
+                                }
+                            }}
+                            title={<span style={{color: "#eee",fontSize: "0.8rem"}}   >{tile.title}</span>}
+                            subtitle={<ReactStars
+                                value={3.5}
+                                edit={false}
+                            />}
+                            />
                     </GridListTile>
                 ))}
             </GridList>
