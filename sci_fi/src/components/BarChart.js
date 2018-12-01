@@ -71,7 +71,6 @@ class BarChart extends Component {
                   easing: 'linear',
                     duration: 500
                 },
-
                 zoom: {
                     enabled: true,
                     mode: 'x',
@@ -131,9 +130,7 @@ class BarChart extends Component {
 
                 },
                 legend: {
-                    labels: {
-                        fontColor: "#eee"
-                    }
+                    display: false
                 },
                 defaultFontColor: '#eee',
                 responsive: true,

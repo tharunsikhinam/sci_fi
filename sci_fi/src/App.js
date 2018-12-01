@@ -18,6 +18,8 @@ import TrendingIcon from '@material-ui/icons/TrendingUp'
 import MoneyIcon from '@material-ui/icons/AttachMoney'
 import StarIcon from '@material-ui/icons/Stars'
 import Divider from '@material-ui/core/Divider'
+import BarChartGrossing from "./components/BarChartGrossing";
+import BarChartTopRated from "./components/BarChartTopRated";
 
 
 
@@ -30,6 +32,9 @@ class App extends Component {
   {
       super(props);
       this.state = {
+          all: true,
+          gross: false,
+          topRated: false,
           chartType: "movies",
           sidebar: false,
           modal:false,
@@ -111,6 +116,7 @@ class App extends Component {
 
   render() {
 
+
       const sideList = (
           <div className={{ list: {
                   width: 250,
@@ -176,14 +182,14 @@ class App extends Component {
               </div>
               <div id="bottom_div" >
                   <div style={{marginTop: '-20px',paddingLeft: '20px',paddingRight: '20px'}}>
-                  <BarChart
+                      {this.state.all ?<BarChart
                       years = {this.state.years}
                       yearsSelect = {this.state.yearsSelect}
                       onChartClick = {this.onChartClick}
                       onChartClickRemove = {this.onChartClickRemove}
                       onChartHover={this.onChartHover}
                       onChartRemoveHover = {this.onChartRemoveHover}
-                  />
+                  /> : this.state.gross ? <BarChartGrossing/> : <BarChartTopRated/>}
                   </div>
                   {/*<ResponsiveBarChart/>*/}
               </div>
