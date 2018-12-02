@@ -197,7 +197,7 @@ class App extends Component {
 
           {/*Modal*/}
           <Modal
-          allMovies={allMovies}
+          allMovies={allMovies[this.state.yearsSelect.selected]}
           year={this.state.yearsSelect.selected} open={this.state.modal} onClose={this.handleModalClose}/>
 
           {/*Drawer*/}
