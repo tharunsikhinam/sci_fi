@@ -21,97 +21,18 @@ const styles = theme => ({
         color: 'rgba(255, 255, 255, 0.54)',
     },
 });
-const tileData=[
-    {
-    img: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX140_CR0,0,140,209_AL_.jpg",
-    title: "Bohemian Rhapsody",
-    author: "CDE"
-},{
-    img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-    title: "ABC",
-    author: "CDE"
-},{
-    img: "https://m.media-amazon.com/images/M/MV5BYzQ2ZmZjNTUtZTg5Ni00ZjYyLWI5ZDQtODA4NzZjNGE5MmFmXkEyXkFqcGdeQXVyMjAyNTEwOQ@@._V1_UY209_CR4,0,140,209_AL_.jpg",
-    title: "ABC",
-    author: "CDE"
-},{
-    img: "https://m.media-amazon.com/images/M/MV5BMTYyNzEyNDAzOV5BMl5BanBnXkFtZTgwNTk3NDczNjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-    title: "ABC",
-    author: "CDE"
-},{
-    img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
-    title: "ABC",
-    author: "CDE"
-},{
-        img: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX140_CR0,0,140,209_AL_.jpg",
-        title: "Bohemian Rhapsody",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BYzQ2ZmZjNTUtZTg5Ni00ZjYyLWI5ZDQtODA4NzZjNGE5MmFmXkEyXkFqcGdeQXVyMjAyNTEwOQ@@._V1_UY209_CR4,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BMTYyNzEyNDAzOV5BMl5BanBnXkFtZTgwNTk3NDczNjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    }, {
-        img: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX140_CR0,0,140,209_AL_.jpg",
-        title: "Bohemian Rhapsody",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BYzQ2ZmZjNTUtZTg5Ni00ZjYyLWI5ZDQtODA4NzZjNGE5MmFmXkEyXkFqcGdeQXVyMjAyNTEwOQ@@._V1_UY209_CR4,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BMTYyNzEyNDAzOV5BMl5BanBnXkFtZTgwNTk3NDczNjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-        img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
-        title: "ABC",
-        author: "CDE"
-    },{
-            img: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX140_CR0,0,140,209_AL_.jpg",
-            title: "Bohemian Rhapsody",
-            author: "CDE"
-        },{
-            img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-            title: "ABC",
-            author: "CDE"
-        },{
-            img: "https://m.media-amazon.com/images/M/MV5BYzQ2ZmZjNTUtZTg5Ni00ZjYyLWI5ZDQtODA4NzZjNGE5MmFmXkEyXkFqcGdeQXVyMjAyNTEwOQ@@._V1_UY209_CR4,0,140,209_AL_.jpg",
-            title: "ABC",
-            author: "CDE"
-        },{
-            img: "https://m.media-amazon.com/images/M/MV5BMTYyNzEyNDAzOV5BMl5BanBnXkFtZTgwNTk3NDczNjM@._V1_UY209_CR0,0,140,209_AL_.jpg",
-            title: "ABC",
-            author: "CDE"
-        },{
-            img: "https://m.media-amazon.com/images/M/MV5BYmE5Yjg0MzktYzgzMi00YTFiLWJjYTItY2M5MmI1ODI4MDY3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX140_CR0,0,140,209_AL_.jpg",
-            title: "ABC",
-            author: "CDE"
-        },]
+
 class SimpleAppBar extends Component {
     constructor(props)
     {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.tiledata1 = this.props.allMovies;
     }
-handleClick(src,title,author){
   
-     this.props.handleGridClick(src,title,author)
+handleClick(tile,src,title,author,summary,ratings,genre){
+    console.log(tile)
+     this.props.handleGridClick(src,title,author,summary,ratings,genre)
 }
 handleMouseClick(e){
     e.target.style.opacity = "1"
@@ -123,19 +44,21 @@ handleMouseLeave(e){
       const {classes} = this.props;
     return (
         <div className={classes.root}>
-            <GridList cellHeight={200} cols={6} className={classes.gridList}>
+            <GridList cellHeight={300} cols={6} className={classes.gridList}>
 
-                {tileData.map(tile => (
-                    <GridListTile  onClick={() => this.handleClick(tile.img,tile.title,tile.author)} 
+                {this.tiledata1.map(tile => (
+                   
+                    <GridListTile  onClick={() => this.handleClick(tile,tile.posterPath,tile.originalTitle,tile.language,tile.summary,tile.rating,tile.subGenre)} 
                         classes={{
                             tile: {
                                 width: '100px'
                             }
                         }}
-                        key={tile.img}>
+                        key={tile.posterPath}>
                         <img onMouseEnter={this.handleMouseClick} onMouseLeave={this.handleMouseLeave}
-                            style={{maxWidth: '100%', maxHeight: '100%',opacity:'0.6'}}
-                            src={tile.img} alt={tile.title} />
+                            style={{maxWidth: '100%', maxHeight: '100%',
+                        opacity:'0.6'}}
+                            src={tile.posterPath} alt={tile.originalTitle} />
                             <GridListTileBar
                             classes={{
                                 marginLeft: 5,
@@ -144,9 +67,9 @@ handleMouseLeave(e){
                                   fontColor: 'black'
                                 }
                             }}
-                            title={<span style={{color: "#eee",fontSize: "0.8rem"}}   >{tile.title}</span>}
+                            title={<span style={{color: "#eee",fontSize: "0.8rem"}}   >{tile.originalTitle}</span>}
                             subtitle={<ReactStars
-                                value={3.5}
+                                value={tile.rating}
                                 edit={false}
                             />}
                             />

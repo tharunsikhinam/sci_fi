@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import ExpandMore from '@material-ui/icons/Clear';
 import Fade from '@material-ui/core/Fade';
 import ReactStars from 'react-stars';
 import InfoIcon from '@material-ui/icons/Launch';
@@ -41,20 +41,59 @@ const styles = theme => ({
         borderBottomColor: "#eee"
     },
     formControl: {
-        width:300,
+        width:150,
         margin: theme.spacing.unit,
         minWidth: 120,
     },
     selectEmpty: {
-        marginTop: -15,
         marginBottom: -(theme.spacing.unit*4)
     },
     textField: {
         width: 400,
-        marginTop: -15,
+        marginTop: -15, 
         marginLeft: theme.spacing.unit*5,
         marginRight: theme.spacing.unit,
         marginBottom: -(theme.spacing.unit*4)
+    },
+    movieName: {
+        fontSize : "22pt",
+        width: '100%',
+        marginBottom: '10px',
+        textDecoration: 'underline',
+    },
+    picsum: {
+        width: '100%',
+        bottom: '10px',
+        height:'400px',
+        paddingLeft: '15px',
+    },
+    pic:{
+        width: '258px',
+        float: 'left',
+        marginRight: '20px',
+        border: '4px solid white'
+    },
+    summary: {
+        float: 'right',
+        width: '73%',
+        marginRight: '20px'
+    },
+    abwatch:{
+        width:'73%',
+        marginRight: '20px',
+        float: 'right',
+    },
+    about:{
+        
+        width: '50%',
+        float: 'left'
+    },
+    watch:{
+        width: '15%',
+        float: 'right',
+    },
+    year:{
+        fontSize: '18pt'
     }
 });
 
@@ -63,15 +102,19 @@ class Modal extends Component {
     {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {name: null,tile: false, expanded:false};
+        this.state = {name: null,tile: false, expanded:false,filterValue:"All Movies",stateMovies:"lol"};
         this.handleChange = this.handleChange.bind(this);
         this.handleTileClick = this.handleTileClick.bind(this);
         this.handleGridClick = this.handleGridClick.bind(this);
         this.handleInnerModalClose = this.handleInnerModalClose.bind(this);
         this.handleCloseClick = this.handleCloseClick.bind(this);
+        this.handleDialogClose = this.handleDialogClose.bind(this);
+        this.handleDialogOpen = this.handleDialogOpen.bind(this);
         var title = null;
         var author = null;
         var src = null;
+        var summary = null;
+        this.defaultVal = "All Movies";
     }
     
     handleChange = name => event => {
@@ -89,22 +132,41 @@ class Modal extends Component {
     handleTileClick()
     {
         console.log("reached here");
+        console.log(this.state.allMovies)
         this.setState({tile: true})
     }
-    handleGridClick(src,title,author)
+    handleGridClick(src,title,author,summary,rating,genre)
     {
         this.src = src;
         this.title = title;
         this.author = author;
-        console.log("reached grid here");
-        console.log(this.state.expanded);
+        this.summary = summary;
+        this.rating = rating;
+        this.genre = genre.split('/');
+        this.genre.splice(-1,1);
+        this.genre = [...new Set(this.genre)];
+        this.genre = this.genre.join(', ')
+        this.genre = this.genre.replace("_"," ")
+        console.log("reached here");
+        console.log(this.state.stateMovies)
+        //console.log(this.genre);
+       // console.log("reached grid here");
+       // console.log(this.summary);
+       // console.log(this.state.expanded);
         this.setState({expanded : !this.state.expanded})
         
     }
     handleCloseClick(){
         this.setState({expanded : !this.state.expanded})
     }
-
+    handleDialogClose(){
+        this.setState({expanded : false})
+        this.props.onClose()
+    }
+    handleDialogOpen(){
+        this.setState({stateMovies:this.props.allMovies});
+        this.props.open();
+    }
   render() {
       
       const {classes} = this.props;
@@ -120,9 +182,10 @@ class Modal extends Component {
               fullWidth={true}
               className={classes.dialog}
               open={this.props.open}
-              onClose={this.props.onClose}
+              onClose={this.handleDialogClose}
               scroll={"paper"}
               aria-labelledby="scroll-dialog-title"
+              
           >
               <DialogTitle
                   classes={{
@@ -131,45 +194,41 @@ class Modal extends Component {
                       }
                   }}
                   id="scroll-dialog-title">
-                  <h1 style={{display:"inline"}}>
-                  Sci-fi Films {this.props.year}
+                  <h1 style={{paddingLeft:"24px", display:"inline"}}>
+                  Sci-fi Films <div style={{display:"inline"}} className={classes.year}>({this.props.year})</div>
                   </h1>
+                  
                   <Fade in={!this.state.expanded} >
-                  <TextField                     
-                      label="Search by title, actor, director"
-                      className={classes.textField}
-                      value={this.state.name}
-                      onChange={this.handleChange('name')}
-                      margin="normal"
-                      variant="outlined"
-                      InputProps={{
-                        endAdornment: <InputAdornment position="end"><SearchIcon /></InputAdornment>
-                      }}
-                     
-                  />
-                  </Fade>
-                  <Fade in={!this.state.expanded} >
-                  <div align="right">
+                  <div style={{display:"inline"}}>
+                 
+                  
+                  
                       <FormControl className={classes.formControl} >
                           <Select                           
                               autoWidth={true}
-                              value={"All Movies"}
-                              onChange={()=>{
-
+                              value={this.state.filterValue}
+                              onChange={(e)=>{
+                                this.setState({filterValue:e.target.value})
                               }}
 
                               align="left"
                               className={classes.selectEmpty}
                           >
-                              <MenuItem style={{width:"300px"}} value="All Movies">
+                              <MenuItem style={{width:"150px"}} value="All Movies">
                                   All Movies
                               </MenuItem>
-                              <MenuItem style={{width:"300px"}} value={10}>Space</MenuItem>
-                              <MenuItem style={{width:"300px"}} value={20}>Robot</MenuItem>
-                              <MenuItem style={{width:"300px"}} value={30}>Alien</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="Alien">Alien</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="Fantasy">Fantasy</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="Dystopian">Dystopian</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="Time Travel">Time Travel</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="AI/Robot">AI/Robot</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="Space Opera">Space Opera</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="Monster">Monster</MenuItem>
                           </Select>
 
                       </FormControl>
+                      
+                      
                       </div>
                       </Fade>
                     
@@ -178,47 +237,73 @@ class Modal extends Component {
               <DialogContent aria-checked={true}>
                   <DialogContentText>
                   <Collapse in={!this.state.expanded} timeout="auto" unmountOnExit>
-                    <GridList handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
+                  
+                    <GridList allMovies={this.props.allMovies} handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
                     </Collapse>
                     <Card>
                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
+          <div >  
               <p>
           <IconButton className={classes.icon}>
                                     <ExpandMore onClick={this.handleCloseClick}/>
                                 </IconButton>
                                 </p>
-                               
-            <div>
-            <h3>
-                Summary: <img align="right"
-                            style={{  width:"200px", borderColor: 'rgba(255,255,255,255)', border: '3px'}}
-                            src={this.src} alt={this.title} />
-                </h3>
-            <div  style={{maxWidth: '75%'}}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
+                             
+           
+            <div className={classes.picsum}> 
+            <div className={classes.pic}>
+            <img align="top" borderColor="white"
+                            style={{  width:"250px", borderColor: 'rgba(255,255,255,255)', border: '3'}}
+                            src={this.src} alt={this.title} /> 
             </div>
-            
-            </div>
-            <div >
-                <h4 > Ratings: 
-            <ReactStars
-                                value={3}
+            <div className={classes.abwatch}>
+
+                            <h1 style={{textDecoration: 'underline'}}>{this.title}</h1>
+            <div className={classes.about}>
+            <table classes={{borderCollapse:"collapse",borderSpacing:"0"}}>
+            <col width="130"></col>
+  <col width="130"></col>
+  <tr>
+    <td class="tg-qtf5" valign="top">
+             <b> Language : </b>
+            </td>
+    <td class="tg-qtf5">{this.author}</td>
+  </tr>
+  <tr>
+    <td class="tg-qtf5" valign="top"> <b>Ratings :</b></td>
+    <td class="tg-qtf5"> <ReactStars 
+                                value={this.rating}
                                 edit={false}
                             />
+            </td>
+  </tr>
+  <tr>
+    <td class="tg-qtf5" valign="top"><b>Sub-genres :</b></td>
+    <td class="tg-qtf5">{this.genre}</td>
+  </tr>
+</table>
             
-            </h4>
             </div>
-            <div >
-            <IconButton style={{fontSize: "11pt"}} onClick={()=> this.handleGoogleSearch(this.title)}>
+            <div className={classes.watch}>
+            <IconButton align="right" style={{fontSize: "11pt"}} onClick={()=> this.handleGoogleSearch(this.title)}>
             Google Search
                                     <InfoIcon />
                                 </IconButton>
             </div>
-            <h2 align="right" >{this.title}</h2>
-            <h4 align="right" >
-              {this.author}
-            </h4>
+            </div>
+                            <div className={classes.summary}>
+                            <h3>Summary:</h3>
+                            <div style={{fontSize:"14pt"}}>
+                            {this.summary}
+                            </div>
+                            </div>
+                   
+            
+            </div>
+            
+            
+            </div>
           </CardContent>
         </Collapse>
                         </Card>
