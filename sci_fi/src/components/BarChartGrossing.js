@@ -12,242 +12,10 @@ const styles = {
     },
 };
 
-const x = [
-    1960,
-    1961,
-    1962,
-    1963,
-    1964,
-    1965,
-    1966,
-    1967,
-    1968,
-    1969,
-    1970,
-    1971,
-    1972,
-    1973,
-    1974,
-    1975,
-    1976,
-    1977,
-    1978,
-    1979,
-    1980,
-    1981,
-    1982,
-    1983,
-    1984,
-    1985,
-    1986,
-    1987,
-    1988,
-    1989,
-    1990,
-    1991,
-    1992,
-    1993,
-    1994,
-    1995,
-    1996,
-    1997,
-    1998,
-    1999,
-    2000,
-    2001,
-    2002,
-    2003,
-    2004,
-    2005,
-    2006,
-    2007,
-    2008,
-    2009,
-    2010,
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2017 ];
-const y = [ 10,
-    15,
-    20,
-    25,
-    30,
-    35,
-    40,
-    45,
-    50,
-    55,
-    60,
-    65,
-    70,
-    75,
-    80,
-    85,
-    90,
-    95,
-    100,
-    105,
-    110,
-    115,
-    120,
-    125,
-    130,
-    135,
-    140,
-    145,
-    150,
-    155,
-    160,
-    165,
-    170,
-    175,
-    180,
-    185,
-    190,
-    195,
-    200,
-    205,
-    210,
-    215,
-    220,
-    225,
-    230,
-    235,
-    240,
-    245,
-    250,
-    255,
-    260,
-    265,
-    270,
-    275,
-    280,
-    285,
-    290,
-    295,
-    300,
-    305,
-    310,
-    315,
-    320,
-    325,
-    330,
-    335,
-    340,
-    345,
-    350,
-    355,
-    360,
-    365,
-    370,
-    375,
-    380,
-    385,
-    390,
-    395,
-    400,
-    405,
-    410,
-    415,
-    420,
-    425,
-    430,
-    435,
-    440,
-    445 ]
-const y1 = [ 445,
-    440,
-    435,
-    430,
-    425,
-    420,
-    415,
-    410,
-    405,
-    400,
-    395,
-    390,
-    385,
-    380,
-    375,
-    370,
-    365,
-    360,
-    355,
-    350,
-    345,
-    340,
-    335,
-    330,
-    325,
-    320,
-    315,
-    310,
-    305,
-    300,
-    295,
-    290,
-    285,
-    280,
-    275,
-    270,
-    265,
-    260,
-    255,
-    250,
-    245,
-    240,
-    235,
-    230,
-    225,
-    220,
-    215,
-    210,
-    205,
-    200,
-    195,
-    190,
-    185,
-    180,
-    175,
-    170,
-    165,
-    160,
-    155,
-    150,
-    145,
-    140,
-    135,
-    130,
-    125,
-    120,
-    115,
-    110,
-    105,
-    100,
-    95,
-    90,
-    85,
-    80,
-    75,
-    70,
-    65,
-    60,
-    55,
-    50,
-    45,
-    40,
-    35,
-    30,
-    25,
-    20,
-    15,
-    10 ];
-class BarChart extends Component {
+const x = ["Avatar","Star Wars: The Force Awakens","The Avengers","Jurassic World","Avengers: Age of Ultron","Harry Potter and the Deathly Hallows: Part 2","Beauty and the Beast","Iron Man 3","Captain America: Civil War","Transformers: Dark of the Moon","The Lord of the Rings: The Return of the King","Transformers: Age of Extinction","Pirates of the Caribbean: Dead Man's Chest","Rogue One: A Star Wars Story","Pirates of the Caribbean: On Stranger Tides","Alice in Wonderland","The Hobbit: An Unexpected Journey","Harry Potter and the Philosopher's Stone","The Jungle Book","Pirates of the Caribbean: At World's End","The Hobbit: The Desolation of Smaug","The Hobbit: The Battle of the Five Armies","Harry Potter and the Deathly Hallows: Part 1","Harry Potter and the Order of the Phoenix","Harry Potter and the Half-Blood Prince","The Lord of the Rings: The Two Towers","Star Wars: Episode I - The Phantom Menace","Jurassic Park","Shrek 2","Harry Potter and the Goblet of Fire","Spider-Man 3","Harry Potter and the Chamber of Secrets","Batman v Superman: Dawn of Justice","The Lord of the Rings: The Fellowship of the Ring","Guardians of the Galaxy Vol. 2","Star Wars: Episode III - Revenge of the Sith","The Hunger Games: Catching Fire","Transformers: Revenge of the Fallen","The Twilight Saga: Breaking Dawn - Part 2","Inception","Spider-Man","Wonder Woman","Independence Day","Fantastic Beasts and Where to Find Them","Shrek the Third","Pirates of the Caribbean: Dead Men Tell No Tales","E.T. the Extra-Terrestrial","Harry Potter and the Prisoner of Azkaban","Spider-Man 2","Star Wars"];
+const y = [2787965087,2068223624,1519557910,1513528810,1405403694,1342000000,1262886337,1215439994,1153304495,1123746996,1118888979,1091405097,1065659812,1056057273,1045713802,1025491110,1021103568,976475550,966550600,961000000,958400000,956019788,954305868,938212738,933959197,926287400,924317558,920100000,919838758,895921036,890871626,876688482,873260194,871368364,863416141,850000000,847423452,836297228,829000000,825532764,821708551,820580447,816969268,809342332,798958165,794191988,792965326,789804554,783766341,775398007]
+
+class BarChartGrossing extends Component {
 
     constructor()
     {
@@ -266,7 +34,7 @@ class BarChart extends Component {
                   borderWidth: 1,
                   hoverBackgroundColor: '#01579B',
                   hoverBorderColor: '#eee',
-                  data: this.state.data
+                  data: y
               }
           ]
 
@@ -284,9 +52,30 @@ class BarChart extends Component {
             {/*}}> abc</button>*/}
         <Bar
             options={{
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        title:function(tooltipItem, data) {
+                            console.log(tooltipItem)
+                            var label = data.datasets[tooltipItem[0].datasetIndex].label || '';
+
+                            console.log(label)
+                            return x[tooltipItem[0].index];
+                        },
+                        label: function(tooltipItem, data) {
+                            console.log(tooltipItem)
+                            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                             console.log(label)
+                            return "$"+ (y[tooltipItem.index]/1000000).toString()+"M";
+                        }
+                    }
+                },
                 animation:{
                   easing: 'linear',
-                    duration: 3000
+                    duration: 1000
                 },
 
                 zoom: {
@@ -304,14 +93,19 @@ class BarChart extends Component {
                     xAxes: [{
                        barPercentage: 0.9,
                         ticks: {
+                            userCallback: ((value,index,values)=>{
+                                if(value.length>25)
+                                return value.substring(0,25)+".."
+                                else
+                                    return value.substring(0,25)
+                            }),
                             fontColor: "white",
-                            fontSize: 14,
-                            stepSize: 50,
-                            beginAtZero: true
+                            fontSize: 10,
+                            autoSkip: false
+
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: "Years",
                             fontColor: "#eee",
                             fontSize: 12,
                             paddingTop: 0,
@@ -322,18 +116,17 @@ class BarChart extends Component {
                     }],
                     yAxes: [{
                         ticks: {
+                            userCallback: ((value,index,values)=>{
+                                return "$"+ (value/1000000).toString()+"M"
+                            }),
                             fontColor: "white",
                             fontSize: 14,
-                            stepSize: 50,
-                            beginAtZero: true
                         },
                         scaleLabel: {
                             display: true,
                             fontSize: 14,
-                            labelString: "Number of movies",
+                            labelString: "Gross revenue",
                             fontColor: "#eee",
-
-
                         },
                         display: true,
                     }]
@@ -346,11 +139,6 @@ class BarChart extends Component {
                 title:{
                   display: false,
 
-                },
-                legend: {
-                    labels: {
-                        fontColor: "#eee"
-                    }
                 },
                 defaultFontColor: '#eee',
                 responsive: true,
@@ -379,4 +167,4 @@ class BarChart extends Component {
   }
 }
 
-export default BarChart;
+export default BarChartGrossing;
