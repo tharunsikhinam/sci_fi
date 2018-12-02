@@ -4,6 +4,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ReactStars from 'react-stars'
 import GridListTileBar from '@material-ui/core/GridListTileBar';
+import  Zoom  from '@material-ui/core/Zoom';
 
 const styles = theme => ({
     root: {
@@ -28,6 +29,7 @@ class SimpleAppBar extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.tiledata1 = this.props.allMovies;
+        this.tiledata2 = this.props.filteredMovies;
     }
   
 handleClick(tile,src,title,author,summary,ratings,genre){
@@ -39,14 +41,29 @@ handleMouseClick(e){
 handleMouseLeave(e){
     e.target.style.opacity = "0.6"
 }
+setVal(t){
+  
+    if(this.tiledata2.includes(t)){
+       
+        return true
+    }
+    else{
+       
+        return  false
+    }
+    return true
+}
+
   render() {
       const {classes} = this.props;
+        this.tiledata1 = this.props.allMovies;
+        this.tiledata2 = this.props.filteredMovies;
     return (
         <div className={classes.root}>
             <GridList cellHeight={300} cols={6} className={classes.gridList}>
 
                 {this.tiledata1.map(tile => (
-                   
+                   <Zoom in= {this.setVal.call(this,tile)} unmountOnExit>
                     <GridListTile  onClick={() => this.handleClick(tile,tile.posterPath,tile.originalTitle,tile.language,tile.summary,tile.rating,tile.subGenre)} 
                         classes={{
                             tile: {
@@ -74,6 +91,7 @@ handleMouseLeave(e){
                             />}
                             />
                     </GridListTile>
+                    </Zoom>
                 ))}
             </GridList>
         </div>

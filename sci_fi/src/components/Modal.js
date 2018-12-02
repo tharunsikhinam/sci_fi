@@ -102,7 +102,7 @@ class Modal extends Component {
     {        
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {name: null,tile: false, expanded:false,filterValue:"All",filteredMovies:null};
+        this.state = {name: null,tile: false, expanded:false,filterValue:"All",filteredMovies:null,filtered: false};
         this.handleChange = this.handleChange.bind(this);
         this.handleTileClick = this.handleTileClick.bind(this);
         this.handleGridClick = this.handleGridClick.bind(this);
@@ -153,17 +153,18 @@ class Modal extends Component {
         this.setState({expanded : !this.state.expanded})
     }
     handleDialogClose(){
-        this.setState({expanded : false})
-        this.props.onClose()
+        this.setState({expanded : false,filterValue: "All", filteredMovies:null,filtered:false})
+        
     }
     handleDialogOpen(){
-        this.setState({stateMovies:this.props.allMovies});
-        this.props.open();
+        this.setState({expanded : false,filterValue: "All", filteredMovies:null,filtered:false})
+       // this.props.onEnter();
     }
   render() {
-      
       const {classes} = this.props;
-      this.state.filteredMovies = this.props.allMovies;
+      if(this.state.filteredMovies==null && this.state.filterValue == "All"){
+          this.state.filteredMovies = this.props.allMovies;
+        }
     return (
       <div >
           <Dialog
@@ -176,7 +177,9 @@ class Modal extends Component {
               fullWidth={true}
               className={classes.dialog}
               open={this.props.open}
-              onClose={this.handleDialogClose}
+              onEnter = {this.handleDialogOpen}
+              onClose={this.props.onClose}
+              onExited={this.handleDialogClose}
               scroll={"paper"}
               aria-labelledby="scroll-dialog-title"
               
@@ -202,26 +205,23 @@ class Modal extends Component {
                               autoWidth={true}
                               value={this.state.filterValue}
                               onChange={(e)=>{
-                                this.filtMovies = this.props.allMovies
+                                let filtMovies = this.props.allMovies
                                   if(e.target.value!="All")
                                  { 
-                                     this.filtMovies = []
+                                     filtMovies = []
                                   this.props.allMovies.forEach(element => {
                                     var sub = element.subGenre;
                                     if(sub.includes(e.target.value)){
-                                        this.filtMovies.push(element)
+                                        filtMovies.push(element)
                                     }
                                   });
                                   
                                 
                               }
                               else{
-                                this.filtMovies = this.props.allMovies
+                                filtMovies = this.props.allMovies
                               }
-                              console.log(this.filtMovies)
-                              this.setState({filterValue:e.target.value})
-                              this.setState({filteredMovies:this.filtMovies});
-                              console.log(this.state.filteredMovies)
+                              this.setState({filterValue:e.target.value,filteredMovies:filtMovies,filtered:true});
                             }}
 
                               align="left"
@@ -250,9 +250,8 @@ class Modal extends Component {
               <DialogContent aria-checked={true}>
                   <DialogContentText>
                   <Collapse in={!this.state.expanded} timeout="auto" unmountOnExit>
-                  
-                    <GridList allMovies={this.state.filteredMovies} handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
-                    </Collapse>
+                  <GridList allMovies={this.props.allMovies} filteredMovies={this.state.filteredMovies} handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
+                     </Collapse>
                     <Card>
                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
