@@ -68,7 +68,8 @@ const styles = theme => ({
         paddingLeft: '15px',
     },
     pic:{
-        width: '258px',
+        width: '22%',
+        height: 'auto',
         float: 'left',
         marginRight: '20px',
         border: '4px solid white'
@@ -85,7 +86,7 @@ const styles = theme => ({
     },
     about:{
         
-        width: '50%',
+        width: '75%',
         float: 'left'
     },
     watch:{
@@ -266,16 +267,16 @@ class Modal extends Component {
             <div className={classes.picsum}> 
             <div className={classes.pic}>
             <img align="top" borderColor="white"
-                            style={{  width:"250px", borderColor: 'rgba(255,255,255,255)', border: '3'}}
+                            style={{  width:"100%", borderColor: 'rgba(255,255,255,255)', border: '3'}}
                             src={this.src} alt={this.title} /> 
             </div>
             <div className={classes.abwatch}>
 
-                            <h1 style={{textDecoration: 'underline'}}>{this.title}</h1>
+                            <h1 style={{textDecoration: 'underline', margin:"0",color:"white"}}>{this.title}</h1>
             <div className={classes.about}>
-            <table classes={{borderCollapse:"collapse",borderSpacing:"0"}}>
-            <col width="130"></col>
-  <col width="130"></col>
+            <table classes={{borderCollapse:"collapse",borderSpacing:"0"}} style={{width:"100%"}}>
+            <col width="40%"></col>
+  <col width="60%"></col>
   <tr>
     <td className="tg-qtf5" valign="top">
              <b> Language : </b>
