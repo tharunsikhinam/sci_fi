@@ -24,14 +24,13 @@ const styles = theme => ({
 
 class SimpleAppBar extends Component {
     constructor(props)
-    {
+    {       
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.tiledata1 = this.props.allMovies;
     }
   
 handleClick(tile,src,title,author,summary,ratings,genre){
-    console.log(tile)
      this.props.handleGridClick(src,title,author,summary,ratings,genre)
 }
 handleMouseClick(e){
@@ -51,12 +50,13 @@ handleMouseLeave(e){
                     <GridListTile  onClick={() => this.handleClick(tile,tile.posterPath,tile.originalTitle,tile.language,tile.summary,tile.rating,tile.subGenre)} 
                         classes={{
                             tile: {
-                                width: '100px'
+                                width: '200px',
+                                height: '297px'
                             }
                         }}
                         key={tile.posterPath}>
                         <img onMouseEnter={this.handleMouseClick} onMouseLeave={this.handleMouseLeave}
-                            style={{maxWidth: '100%', maxHeight: '100%',
+                            style={{maxWidth: '100%', maxHeight: '100%',width: '200px',height: '297px',
                         opacity:'0.6'}}
                             src={tile.posterPath} alt={tile.originalTitle} />
                             <GridListTileBar

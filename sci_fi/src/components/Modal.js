@@ -99,10 +99,10 @@ const styles = theme => ({
 
 class Modal extends Component {
     constructor(props)
-    {
+    {        
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {name: null,tile: false, expanded:false,filterValue:"All Movies",stateMovies:"lol"};
+        this.state = {name: null,tile: false, expanded:false,filterValue:"All",filteredMovies:null};
         this.handleChange = this.handleChange.bind(this);
         this.handleTileClick = this.handleTileClick.bind(this);
         this.handleGridClick = this.handleGridClick.bind(this);
@@ -132,7 +132,6 @@ class Modal extends Component {
     handleTileClick()
     {
         console.log("reached here");
-        console.log(this.state.allMovies)
         this.setState({tile: true})
     }
     handleGridClick(src,title,author,summary,rating,genre)
@@ -147,12 +146,6 @@ class Modal extends Component {
         this.genre = [...new Set(this.genre)];
         this.genre = this.genre.join(', ')
         this.genre = this.genre.replace("_"," ")
-        console.log("reached here");
-        console.log(this.state.stateMovies)
-        //console.log(this.genre);
-       // console.log("reached grid here");
-       // console.log(this.summary);
-       // console.log(this.state.expanded);
         this.setState({expanded : !this.state.expanded})
         
     }
@@ -170,6 +163,7 @@ class Modal extends Component {
   render() {
       
       const {classes} = this.props;
+      this.state.filteredMovies = this.props.allMovies;
     return (
       <div >
           <Dialog
@@ -194,7 +188,7 @@ class Modal extends Component {
                       }
                   }}
                   id="scroll-dialog-title">
-                  <h1 style={{paddingLeft:"24px", display:"inline"}}>
+                  <h1 style={{paddingLeft:"36px", display:"inline"}}>
                   Sci-fi Films <div style={{display:"inline"}} className={classes.year}>({this.props.year})</div>
                   </h1>
                   
@@ -208,22 +202,41 @@ class Modal extends Component {
                               autoWidth={true}
                               value={this.state.filterValue}
                               onChange={(e)=>{
-                                this.setState({filterValue:e.target.value})
-                              }}
+                                this.filtMovies = this.props.allMovies
+                                  if(e.target.value!="All")
+                                 { 
+                                     this.filtMovies = []
+                                  this.props.allMovies.forEach(element => {
+                                    var sub = element.subGenre;
+                                    if(sub.includes(e.target.value)){
+                                        this.filtMovies.push(element)
+                                    }
+                                  });
+                                  
+                                
+                              }
+                              else{
+                                this.filtMovies = this.props.allMovies
+                              }
+                              console.log(this.filtMovies)
+                              this.setState({filterValue:e.target.value})
+                              this.setState({filteredMovies:this.filtMovies});
+                              console.log(this.state.filteredMovies)
+                            }}
 
                               align="left"
                               className={classes.selectEmpty}
                           >
-                              <MenuItem style={{width:"150px"}} value="All Movies">
+                              <MenuItem style={{width:"150px"}} value="All">
                                   All Movies
                               </MenuItem>
-                              <MenuItem style={{width:"150px"}} value="Alien">Alien</MenuItem>
-                              <MenuItem style={{width:"150px"}} value="Fantasy">Fantasy</MenuItem>
-                              <MenuItem style={{width:"150px"}} value="Dystopian">Dystopian</MenuItem>
-                              <MenuItem style={{width:"150px"}} value="Time Travel">Time Travel</MenuItem>
-                              <MenuItem style={{width:"150px"}} value="AI/Robot">AI/Robot</MenuItem>
-                              <MenuItem style={{width:"150px"}} value="Space Opera">Space Opera</MenuItem>
-                              <MenuItem style={{width:"150px"}} value="Monster">Monster</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="alien">Alien</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="fantasy">Fantasy</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="dystopian">Dystopian</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="time_travel">Time Travel</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="robot">AI/Robot</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="space">Space</MenuItem>
+                              <MenuItem style={{width:"150px"}} value="monster">Monster</MenuItem>
                           </Select>
 
                       </FormControl>
@@ -238,7 +251,7 @@ class Modal extends Component {
                   <DialogContentText>
                   <Collapse in={!this.state.expanded} timeout="auto" unmountOnExit>
                   
-                    <GridList allMovies={this.props.allMovies} handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
+                    <GridList allMovies={this.state.filteredMovies} handleTileClick={this.handleTileClick} handleGridClick={this.handleGridClick}/>
                     </Collapse>
                     <Card>
                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
