@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Icon from "@material-ui/core/es/Icon/Icon";
 
 
 const styles = {
@@ -25,9 +26,16 @@ class SimpleAppBar extends Component {
       <div className={classes.root}>
           <AppBar position="static" color="default">
               <Toolbar>
-                  <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                      <MenuIcon onClick={this.props.handleMenuClick}/>
+                  <IconButton className={classes.menuButton} src="/SciFi_Logo_FINAL-01.png">
+                      <img src="/SciFi_Logo_FINAL-01.png"
+                           height={40}
+                           width={40}
+                          onClick={this.props.handleMenuClick}/>
                   </IconButton>
+                  {/*<img*/}
+                      {/*height={40}*/}
+                      {/*width={40}*/}
+                      {/*src="/SciFi_Logo_FINAL-01.png"/>*/}
                   <Typography variant="h6"
                               style={{
                                   fontFamily: "futura-extra-black"

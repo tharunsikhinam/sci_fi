@@ -14,6 +14,14 @@
   font-family: "futura-bold-font";
   src: url("./FuturaBoldFont.ttf")
 }
+@font-face {
+  font-family: "futura-book-font";
+  src: url("./FuturaBookfont.ttf")
+}
+@font-face {
+  font-family: "futura-medium-bt";
+  src: url("./futuraMediumBt.ttf")
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

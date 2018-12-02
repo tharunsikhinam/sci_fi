@@ -50,7 +50,7 @@ class CardRadarChart extends Component {
                         radius: 0,
                         label: this.props.yearsSelect.selected ,
                         backgroundColor: 'rgba(179,181,198,0.2)',
-                        borderColor: '#2196f3',
+                        borderColor: '#fff',
                         pointBackgroundColor: 'rgba(179,181,198,1)',
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
@@ -59,13 +59,13 @@ class CardRadarChart extends Component {
                     }
                 ]
             }
-            if(this.props.years.selected)
+            if(this.props.years.selected && (this.props.yearsSelect.selected!=this.props.years.selected))
             {
                 data.datasets.push({
                     radius: 0,
                     label: this.props.years.selected,
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
+                    backgroundColor: 'rgba(179,181,198,0.2)',
+                    borderColor: '#2196f3',
                     pointBackgroundColor: 'rgba(179,181,198,1)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
@@ -137,7 +137,10 @@ class CardRadarChart extends Component {
                           },
                           scales: {
                               tickColor: "#eee",
+                              fontSize: 20,
+                              fontFamily: "futura-bold-font",
                               ticks: {
+
                                   min:0,
                                   display: false
                               },
@@ -148,7 +151,9 @@ class CardRadarChart extends Component {
                           maintainAspectRatio: false,
                           legend: {
                               labels: {
-                                  fontColor: 'white'
+                                  fontSize: 20,
+                                  fontFamily: "futura-bold-font",
+                                  fontColor: 'rgba(255, 255, 255, 0.7)'
                               }
                           },
                           scale: {
@@ -157,7 +162,8 @@ class CardRadarChart extends Component {
                               },
                               fontSize: '20px',
                               pointLabels:{
-                                  fontSize: 12,
+                                  fontFamily: "futura-medium-bt",
+                                  fontSize: 16,
                                   fontColor: 'white',
                               },
                               ticks: {
