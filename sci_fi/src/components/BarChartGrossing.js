@@ -12,34 +12,62 @@ const styles = {
     },
 };
 
-const x = ["Avatar","Star Wars: The Force Awakens","The Avengers","Jurassic World","Avengers: Age of Ultron","Harry Potter and the Deathly Hallows: Part 2","Beauty and the Beast","Iron Man 3","Captain America: Civil War","Transformers: Dark of the Moon","The Lord of the Rings: The Return of the King","Transformers: Age of Extinction","Pirates of the Caribbean: Dead Man's Chest","Rogue One: A Star Wars Story","Pirates of the Caribbean: On Stranger Tides","Alice in Wonderland","The Hobbit: An Unexpected Journey","Harry Potter and the Philosopher's Stone","The Jungle Book","Pirates of the Caribbean: At World's End","The Hobbit: The Desolation of Smaug","The Hobbit: The Battle of the Five Armies","Harry Potter and the Deathly Hallows: Part 1","Harry Potter and the Order of the Phoenix","Harry Potter and the Half-Blood Prince","The Lord of the Rings: The Two Towers","Star Wars: Episode I - The Phantom Menace","Jurassic Park","Shrek 2","Harry Potter and the Goblet of Fire","Spider-Man 3","Harry Potter and the Chamber of Secrets","Batman v Superman: Dawn of Justice","The Lord of the Rings: The Fellowship of the Ring","Guardians of the Galaxy Vol. 2","Star Wars: Episode III - Revenge of the Sith","The Hunger Games: Catching Fire","Transformers: Revenge of the Fallen","The Twilight Saga: Breaking Dawn - Part 2","Inception","Spider-Man","Wonder Woman","Independence Day","Fantastic Beasts and Where to Find Them","Shrek the Third","Pirates of the Caribbean: Dead Men Tell No Tales","E.T. the Extra-Terrestrial","Harry Potter and the Prisoner of Azkaban","Spider-Man 2","Star Wars"];
-const y = [2787965087,2068223624,1519557910,1513528810,1405403694,1342000000,1262886337,1215439994,1153304495,1123746996,1118888979,1091405097,1065659812,1056057273,1045713802,1025491110,1021103568,976475550,966550600,961000000,958400000,956019788,954305868,938212738,933959197,926287400,924317558,920100000,919838758,895921036,890871626,876688482,873260194,871368364,863416141,850000000,847423452,836297228,829000000,825532764,821708551,820580447,816969268,809342332,798958165,794191988,792965326,789804554,783766341,775398007]
+const ids=["tt0499549","tt2488496","tt0848228","tt0369610","tt1201607","tt3498820","tt0167260","tt3748528","tt0083866","tt1375666"];
+const x = ["Avatar","Star Wars","The Avengers","Jurassic World","Harry Potter & the Deathly Hallows:2","Captain America: Civil War","LOTR: The Return of the King","Rogue One","E.T.","Inception"]
+const y = [2787965087,2068223624,1519557910,1513528810,1342000000,1153304495,1118888979,1056057273,892965326,825532764]
 
 class BarChartGrossing extends Component {
 
     constructor()
     {
         super();
-        this.state = {flag: true,data:y}
+        this.state = {flag: true,data:y,hover: 0,backgroundColors:'#2196f3',hoverBackgroundColor: '#eee'}
+    }
+    componentWillReceiveProps(nextProps) {
+        var backgroundColors = ids.map((node)=>{
+            if(nextProps.grossingIdClick === null)
+                return '#2196f3'
+            else if(nextProps.grossingIdClick!==null)
+            {
+                if(nextProps.grossingIdClick === node)
+                    return '#eee'
+                else
+                    return '#2196f3'
+            }
+
+        });
+        var hoverBackgroundColor= ids.map((node)=>{
+            if(nextProps.grossingIdClick === null)
+                return '#01579B'
+            else if(this.grossingIdClick!==null)
+            {
+                if(nextProps.grossingIdClick === node)
+                    return '#eee'
+                else
+                    return '#01579B'
+            }
+
+        })
+        this.setState({backgroundColors: backgroundColors,hoverBackgroundColor: hoverBackgroundColor})
     }
 
-  render() {
-      const data = {
-          labels: x,
+    render() {
+      var data = {
+          labels: ["Avatar","Star Wars","The Avengers","Jurassic World","Harry Potter & the Deathly Hallows:2","Captain America: Civil War","LOTR: The Return of the King","Rogue One","E.T.","Inception"],
           datasets: [
               {
                   label: "Sci fi over the ages",
-                  backgroundColor: '#2196f3',
+                  backgroundColor: this.state.backgroundColors,
                   borderColor: '#01579B',
                   borderWidth: 1,
-                  hoverBackgroundColor: '#01579B',
+                  hoverBackgroundColor: this.state.hoverBackgroundColor,
                   hoverBorderColor: '#eee',
-                  data: y
+                  data: [2787965087,2068223624,1519557910,1513528810,1342000000,1153304495,1118888979,1056057273,892965326,825532764]
               }
           ]
 
-      }
-
+      };
+    console.log("bbbb",this.props)
     return (
         <div style={{height: '50vh',marginTop: '2vh'}}>
             {/*<button onClick={()=>{*/}
@@ -58,10 +86,6 @@ class BarChartGrossing extends Component {
                 tooltips: {
                     callbacks: {
                         title:function(tooltipItem, data) {
-                            console.log(tooltipItem)
-                            var label = data.datasets[tooltipItem[0].datasetIndex].label || '';
-
-                            console.log(label)
                             return x[tooltipItem[0].index];
                         },
                         label: function(tooltipItem, data) {
@@ -75,7 +99,7 @@ class BarChartGrossing extends Component {
                 },
                 animation:{
                   easing: 'linear',
-                    duration: 1000
+                    duration: 500
                 },
 
                 zoom: {
@@ -93,14 +117,11 @@ class BarChartGrossing extends Component {
                     xAxes: [{
                        barPercentage: 0.9,
                         ticks: {
-                            userCallback: ((value,index,values)=>{
-                                if(value.length>25)
-                                return value.substring(0,25)+".."
-                                else
-                                    return value.substring(0,25)
-                            }),
+                            maxRotation: 10,
+                            minRotation: 0,
+                            stepSize: 1000,
                             fontColor: "white",
-                            fontSize: 10,
+                            fontSize: 15,
                             autoSkip: false
 
                         },
@@ -119,9 +140,11 @@ class BarChartGrossing extends Component {
                             userCallback: ((value,index,values)=>{
                                 return "$"+ (value/1000000).toString()+"M"
                             }),
+                            min: 40000000,
                             fontColor: "white",
                             fontSize: 14,
                         },
+
                         scaleLabel: {
                             display: true,
                             fontSize: 14,
@@ -145,16 +168,35 @@ class BarChartGrossing extends Component {
                 maintainAspectRatio: false,
                 events: ['click','mousemove','mouseout'],
                 onHover: (event,chartElement)=>{
-                    console.log(chartElement);
+
+                    if(chartElement[0]!==undefined)
+                    {
+                        if(this.props.selectId !== chartElement[0]._index) {
+                            this.props.onChartHover(chartElement[0]._index)
+
+                        }
+
+                    }
+                    else {
+                        if (this.props.hoverId !== null)
+                                this.props.onChartRemoveHover()
+                    }
                     event.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
 
                 },
-                onClick: (event,value) => {
-                    if(value.length !== 0 )
+                onClick: (event,chartElement) => {
+                    console.log("reached click event",chartElement)
+                    if(chartElement[0]!==undefined)
                     {
-                        console.log("values",value);
-                        console.log(value[0]._index)
+                        if(this.props.selectId !== chartElement[0]._index)
+                            this.props.onChartClick(chartElement[0]._index)
+                        else
+                            this.props.onChartClickRemove()
+                    }
+                    else {
 
+                        if(this.props.hoverId !== null)
+                            this.props.onChartClickRemove()
                     }
 
                 }

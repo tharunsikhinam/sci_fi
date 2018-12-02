@@ -277,22 +277,22 @@ class Modal extends Component {
             <col width="130"></col>
   <col width="130"></col>
   <tr>
-    <td class="tg-qtf5" valign="top">
+    <td className="tg-qtf5" valign="top">
              <b> Language : </b>
             </td>
-    <td class="tg-qtf5">{this.author}</td>
+    <td className="tg-qtf5">{this.author}</td>
   </tr>
   <tr>
-    <td class="tg-qtf5" valign="top"> <b>Ratings :</b></td>
-    <td class="tg-qtf5"> <ReactStars 
+    <td className="tg-qtf5" valign="top"> <b>Ratings :</b></td>
+    <td className="tg-qtf5"> <ReactStars
                                 value={this.rating}
                                 edit={false}
                             />
             </td>
   </tr>
   <tr>
-    <td class="tg-qtf5" valign="top"><b>Sub-genres :</b></td>
-    <td class="tg-qtf5">{this.genre}</td>
+    <td className="tg-qtf5" valign="top"><b>Sub-genres :</b></td>
+    <td className="tg-qtf5">{this.genre}</td>
   </tr>
 </table>
             
@@ -304,7 +304,7 @@ class Modal extends Component {
                                 </IconButton>
             </div>
             </div>
-                            <div className={classes.summary}>
+                <div className={classes.summary}>
                             <h3>Summary:</h3>
                             <div style={{fontSize:"14pt"}}>
                             {this.summary}

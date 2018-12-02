@@ -33,7 +33,7 @@ class CardDisplay extends Component {
         super(props);
     }
   render() {
-
+      console.log(this.props)
       const { classes } = this.props;
       const bull = <span className={classes.bullet}>•</span>;
 
@@ -45,7 +45,7 @@ class CardDisplay extends Component {
                       style={{
                           fontFamily: "futura-heavy"
                       }}
-                      variant="h4" component="h2" className={classes.title} color="textSecondary" gutterBottom>
+                      variant="h5" component="h3" className={classes.title} color="textSecondary" gutterBottom>
                       {this.props.yearsSelect.selected ?
                           this.props.yearsSelect.selected :
                           (this.props.years.selected? this.props.years.selected:null)}
@@ -54,23 +54,23 @@ class CardDisplay extends Component {
                       style={{
                           fontFamily: "futura-normal"
                       }}
-                      variant="h5" component="h3">
+                      variant="h5" component="h5">
                       {this.props.yearsSelect.selected ?
                           <div>
-                              1. Interstellar
-                              <br/>
-                              2. Something else
-                              <br/>
-                              3. And something else
-                              <br/>
+                              {this.props.allMovies[this.props.yearsSelect.selected].map((node,index)=>{
+                                  if(index<3)
+                                      return <p style={{fontSize: 20,
+                                          fontFamily: "futura-medium-bt",
+                                          marginBottom: 0,marginTop: 5}}>{index+1}) {node.originalTitle}</p>
+                              })}
                           </div> :
                           (this.props.years.selected?<div>
-                              1. Interstellar
-                              <br/>
-                              2. Something else
-                              <br/>
-                              3. And something else
-                              <br/>
+                              {this.props.allMovies[this.props.years.selected].map((node,index)=>{
+                                  if(index<3)
+                                      return <p style={{
+                                          fontFamily: "futura-medium-bt",
+                                          fontSize: 20,marginBottom: 0,marginTop: 5}}>{index+1}) {node.originalTitle}</p>
+                              })}
                           </div> :<div>
                               Click/Hover over a bar to explore more
                           </div>)}
@@ -79,13 +79,17 @@ class CardDisplay extends Component {
 
 
               </CardContent>
-              <CardActions style={{justifyContent: "center"}}>
+              <CardActions style={{justifyContent: "center",paddingTop: 0,marginTop: 0}}>
                   {this.props.yearsSelect.selected?
                   <Button
+                      style={{
+                          backgroundColor: '#2196f3',
+                          fontFamily: 'futura-medium-bt'
+                      }}
                   variant="contained"
                   color="primary"
                   onClick={this.props.onExploreClick}
-                      size="large">Explore</Button>:null}
+                      size="large"><a style={{fontFamily: 'futura-medium-bt'}}>Explore</a></Button>:null}
               </CardActions>
           </Card>
       </div>
