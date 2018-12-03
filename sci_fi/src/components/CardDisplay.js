@@ -74,7 +74,7 @@ class CardDisplay extends Component {
                           </div> :<div style={{fontSize:"1.3vw",color:"#d3d3d3"}}>
                           Science Fiction is often popularly associated with expensive special effects, extravagant set stages, and supernatural stories. While SciFi does portray stories that are fictional, at its core it is a very introspective genre. 
                           <br /> Science fiction is using an exploration of where we might be, to explore where it seems like we are heading, to reveal where we exactly are. 
-                          <div style={{  marginTop:"10px",fontSize:"1.3vw",color:"white"}}><b>Click/Hover over a bar to explore more...</b></div>
+                          <div style={{  marginTop:"25px",fontSize:"1.3vw",color:"white"}}><b>Click/Hover over a bar to explore more...</b></div>
                           </div>)}
 
                   </Typography>
