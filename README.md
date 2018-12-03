@@ -7,4 +7,4 @@ A visualization project that analyzes the change in science fiction movies over 
 - Grossing
 
 ## Website Link
-https://apoorva-sh.github.io/sci_fi/
+https://tharunsikhinam.github.io/sci_fi/
