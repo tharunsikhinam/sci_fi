@@ -1,0 +1,100 @@
+alien_keywords = [
+  'saucer',
+  'alien',
+  'life',
+  'human',
+  'extraterrestrial',
+  'ufo',
+  'parasite',
+  'meteorite',
+  'meteor',
+  'ET',
+  'saucers',
+  'aliens',
+  'extraterrestrials',
+  'ufos',
+  'parasites',
+  'meteorites',
+  'meteors',
+  'supernatural',
+  'xenomorph',
+  'area 51',
+  'xenomorphs',
+]
+
+space_keywords = [
+  'luke',
+  'star',
+  'spaceship',
+  'battle',
+  'interstellar',
+  'planet',
+  'enterprise',
+  'skywalker',
+  'darth',
+  'droid'
+  'earth',
+  'spock',
+  'kirk',
+  'space',
+  'capt',
+  'moon',
+  'spacecraft',
+  'crew',
+  'comet',
+  'mars',
+  'galaxy', 'nebula', 'astronaut', 'galaxies', 'nebulas', 'astronauts', 'stars', 'spaceships', 'battles', 'planets', 'droids', 'moons', 'spacecrafts', 'comets', 'jupiter', 'pluto', 'venus', 'sun', 'suns', 'neptune', 'asteroid', 'asteroids', 'meteor', 'meteors', 'meteorites', 'meteorite”, 'mercury', 'antimatter', 'black hole', 'celestial', 'comet', 'comets', 'cosmic', 'constellation', 'exoplanet', 'lodestar', 'milky way', 'nova', 'supernova', 'pulsar', 'quasar', 'satellite', 'satellites', 'solar', 'world', 'eclipse', 'universe', 'interplanetary',
+]
+
+robot_keywords = [
+  'cop',
+  'ai',
+  'cyborg',
+  'terminator',
+  'army',
+  'android',
+  'weapon',
+  'robot',
+  'intelligence',
+  'machine',
+  'artificial', 'mech', 'machina', 'mecha', 'cyborgs', 'terminators', 'armies', 'androids', 'droid', 'droids', 'weapons', 'robots', 'machines', 'robotic', 'robotics', 'automaton', 'automatons', 'bot', 'bots', 'bionic', 'bionics', 'mechanism', 'mechanisms',
+
+]
+
+time_travel_keywords = [
+  'travel',
+  'time',
+  'back',
+  'frozen',
+  'spacetime', 'eternalism', 'futurity', 'future', 'past',
+
+]
+
+super_keywords = [
+  'marvel',
+  'superman',
+  'superpower',
+  'super',
+  'powers', 'ability', 'abilities', 'dc', 'gifted', 'x-men', 'hero', 'heroes',
+]
+
+dystopian_keywords = ['virus', 'future', 'nuclear', 'city', 'epidemic', 'prison', 'dark', 'murder', 'evil', 'violence', 'experiment'\
+                      'totalitarian', 'society', 'post-apocalyptic', 'dystopian', 'experiments', 'sinister', 'futuristic', \
+                      'radiation', 'biblical', 'mysterious', 'military', 'spy', 'heavenly', 'cloning', 'nazi', 'reich',\
+                      'death', 'war', 'drug', 'wasteland',
+                      'mutant', 'mutants', 'mutation', 'mutations', 'viruses', 'epidemics', 'clone', 'communism', 'communist', 'communists', 'dystopia', 'clones', 'wastelands', 'apocalypse', 'alternate', 'reality', 'bleak', 'dead', 'zombie', 'zombies', 'apes', 'drought', 'lack', 'dwindling', 'atmosphere', 'cyberpunk', 'political', 'unethical', 'raiders', 'raider',
+
+]
+
+monster_keywords = ['frankenstein', 'vampire', 'werewolf', 'shark', 'spider', 'zombie', 'blob', 'creature', 'troll', 'gypsy', 'ape'\
+                      'dinosaur', 'jurassic', 'scientist', 'swamp', 'dinosaurs', 'monster', 'octopus', 'godzilla', 'scorpion',\
+                      'ants', 'golem', 'giants', 'serpent', 'crocodile', 'bermuda', 'mutant', 'mutants', 'mutation', 'mutations', 'vampires', 'werewolves', 'sharks', 'spiders', 'zombies', 'dead', 'creatures', 'apes', 'scientists', 'evil', 'swamps', 'monsters', 'octopi', 'scorpions', 'reptile', 'reptilian', 'golems', 'giant', 'hulking', 'serpentine', 'crocodiles', 'genetic', 'engineered', 'aberration', 'beast', 'beasts', 'humanoid', 'humanoids', 'folklore', 'spirit', 'spirits', 'freak', 'demon', 'freaks', 'demons', 'ogre', 'ogres', 'orc', 'orcs', 'elf', 'elves', 'bogeyman', 'behemoth', 'behemoths', 'monstrosity', 'monstrosities', 'colossal', 'colossus', 'leviathan', 'leviathans', 'dracula', 'monstrous', 'ghost', 'ghosts', 'specter', 'specters', 'phantom', 'phantoms', 'apparition', 'apparitions', 'wraith', 'wraiths', 'chimera', 'chimeras',
+
+]
+
+techno_keywords = ['computer', 'cyber', 'matrix', 'chip', 'network', 'serum', 'data', 'virtual', 'reality', 'laser', 'video', 'game'\
+                      'player', 'tech', 'memory', 'database', 'computers', 'program', 'matrices', 'databases', 'serums', 'technology', 'technologies', 'code', 'coded', 'codes', 'coding', 'coder', 'coders', 'simulator', 'simulation', 'simulators', 'simulations', 'programs', 'gadget', 'gadgets', 'electronic', 'electronics', 'cyberpunk', 'cyber', 'cybers', 'nano', 'nanotechnology', 'nanotechnologies', 'biotech', 'biotechnology', 'biotechnologies', 'software', 'softwares', 'digital',
+
+]
+
+fantasy_keywords = ['magic', 'magical', 'wizard', 'wizards', 'witch', 'witches', 'wizardry', 'spells', 'spell casting', 'spell caster', 'wand', 'wands', 'hobbit', 'elf', 'elves', 'orc', 'orcs', 'dragon', 'dragons', 'quest', 'quests', 'dwarves', 'dwarven', 'dwarf', 'hobbits', 'elven', 'cursed', 'curse', 'curses', 'goblin', 'goblins', 'spirit', 'spirits', 'wizarding', 'enchant', 'enchantment', 'enchantments', 'enchanted', 'enchanting', 'potion', 'potions', 'alchemy', 'alchemist', 'chemist', 'apothecary', 'elder', 'elders', 'summoner']
