@@ -138,9 +138,11 @@ class BarChartGrossing extends Component {
                     yAxes: [{
                         ticks: {
                             userCallback: ((value,index,values)=>{
+                                if(value>=1000000000)
+                                    return "$"+ (value/1000000000).toString()+"B"
                                 return "$"+ (value/1000000).toString()+"M"
                             }),
-                            min: 40000000,
+                            min: 250000000,
                             fontColor: "white",
                             fontSize: 14,
                         },

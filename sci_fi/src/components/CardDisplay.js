@@ -46,9 +46,9 @@ class CardDisplay extends Component {
                           fontFamily: "futura-heavy"
                       }}
                       variant="h5" component="h3" className={classes.title} color="textSecondary" gutterBottom>
-                      {this.props.yearsSelect.selected ?
-                          this.props.yearsSelect.selected :
-                          (this.props.years.selected? this.props.years.selected:null)}
+                       {this.props.yearsSelect.selected ?
+                           "Top Rated Films" + "("+this.props.yearsSelect.selected+")" :
+                          (this.props.years.selected? "Top Rated Films" + "("+this.props.years.selected+")":null)}
                   </Typography>
                   <Typography
                       style={{

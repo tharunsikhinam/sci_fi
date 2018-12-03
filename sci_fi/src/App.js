@@ -21,6 +21,7 @@ import Divider from '@material-ui/core/Divider'
 import BarChartGrossing from "./components/BarChartGrossing";
 import BarChartTopRated from "./components/BarChartTopRated";
 import CardRadarChartGrossing from "./components/CardGrossingRadarChart"
+import CardDisplayGrossing from "./components/CardDisplayGrossing";
 import x from "./components/allMovies"
 let allMovies = x;
 
@@ -192,9 +193,6 @@ class App extends Component {
       )
     return (
       <div className="App">
-
-
-
           {/*Modal*/}
           <Modal
           allMovies={allMovies[this.state.yearsSelect.selected]}
@@ -223,7 +221,13 @@ class App extends Component {
                           allMovies = {allMovies}
                           yearsSelect = {this.state.yearsSelect}
                           years = {this.state.years}
-                          onExploreClick={this.handleExploreClick}/>:null}
+                          onExploreClick={this.handleExploreClick}/>:
+                          this.state.gross?
+                              <CardDisplayGrossing
+                                  grossingIdClick={this.state.grossingIdSelect}
+                                  grossingIdHover={this.state.grossingIdHover}
+                              />:null
+                      }
                   </div>
 
                   <div style={{
