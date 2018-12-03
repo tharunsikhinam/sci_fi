@@ -275,8 +275,8 @@ class Modal extends Component {
                             <h1 style={{textDecoration: 'underline', margin:"0",color:"white"}}>{this.title}</h1>
             <div className={classes.about}>
             <table classes={{borderCollapse:"collapse",borderSpacing:"0"}} style={{width:"100%"}}>
-            <col width="40%"></col>
-  <col width="60%"></col>
+            <col width="20%"></col>
+  <col width="80%"></col>
   <tr>
     <td className="tg-qtf5" valign="top">
              <b> Language : </b>
