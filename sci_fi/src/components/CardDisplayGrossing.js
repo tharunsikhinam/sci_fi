@@ -35,11 +35,11 @@ const styles = {
     },
     picsum: {
         width: '100%',
-        height:'100px',
+        height:'20vw',
     },
     pic:{
         width: '25%',
-        height: 'auto',
+        height: '80%',
         float: 'left',
         marginRight: '5px',
         border: '4px solid white'
@@ -63,7 +63,6 @@ const styles = {
         float: 'left'
     },
     watch:{
-        width: '20%',
         float: 'right',
     },
     year:{
@@ -77,6 +76,9 @@ class CardDisplayGrossing extends Component {
     constructor(props)
     {
         super(props);
+    }
+    handleGoogleSearch(q) {
+        window.open('http://google.com/search?q=' + q)
     }
   render() {
       console.log(this.props)
@@ -107,7 +109,8 @@ class CardDisplayGrossing extends Component {
                                                          style={{
                                                              width: "100%",
                                                              borderColor: 'rgba(255,255,255,255)',
-                                                             border: '3'
+                                                             border: '3',
+                                                             maxHeight : '30vw'
                                                          }}
                                                          src=
                                                          {grossing[this.props.grossingIdHover].poster} alt={grossing[this.props.grossingIdHover].title}/>
@@ -158,7 +161,7 @@ class CardDisplayGrossing extends Component {
                                                         <IconButton align="right" style={{fontSize: "11pt"}}
                                                                     onClick={() => this.handleGoogleSearch(this.title)}>
                                                             Google Search
-                                                            <InfoIcon/>
+                                                            <InfoIcon style={{fontSize: "small"}}/>
                                                         </IconButton>
                                                     </div>
                                                 </div>
@@ -192,14 +195,14 @@ class CardDisplayGrossing extends Component {
                                                     <h3 style={{
                                                         textDecoration: 'underline',
                                                         margin: "0",
-                                                        color: "white", fontSize: "2vw",
+                                                        color: "white", fontSize: "1.3vw",
                                                         display: "inline"
                                                     }}>{grossing[this.props.grossingIdClick].title}</h3>  
                                                     <div className={classes.watch}>
                                                     <IconButton align="right" style={{fontSize: "1vw"}}
                                                                 onClick={() => this.handleGoogleSearch(this.title)}>
-                                                        Google Search
-                                                        <InfoIcon/>
+                                                        Google Search&nbsp;
+                                                        <InfoIcon style={{fontSize: "1vw"}}/>
                                                     </IconButton>
                                                 </div>
                                                 <br />
