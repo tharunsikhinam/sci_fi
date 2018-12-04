@@ -6,9 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ReactStars from "react-stars";
-import {Container,Row,Col} from 'reactstrap'
 import IconButton from "@material-ui/core/IconButton/IconButton";
-import InfoIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import InfoIcon from '@material-ui/icons/Launch';
 
 
 const styles = {
@@ -17,7 +16,7 @@ const styles = {
         display: 'inherit',
         width: '50vw',
         transitionDuration: '0.3s',
-        height: '35vh'
+        height: '35vh',
 
     },
     bullet: {
@@ -36,34 +35,35 @@ const styles = {
     },
     picsum: {
         width: '100%',
-        bottom: '10px',
-        height:'400px',
-        paddingLeft: '15px',
+        height:'100px',
     },
     pic:{
-        width: '22%',
+        width: '25%',
         height: 'auto',
         float: 'left',
-        marginRight: '20px',
+        marginRight: '5px',
         border: '4px solid white'
     },
     summary: {
+        textAlign: 'left',
         float: 'right',
-        width: '73%',
-        marginRight: '20px'
+        width: '70%',
+        marginRight: '5px',
+        margingTop: '5px'
     },
     abwatch:{
-        width:'73%',
-        marginRight: '20px',
+        width:'70%',
+        marginRight: '5x',
         float: 'right',
+        textAlign: "left",
     },
     about:{
 
-        width: '75%',
+        width: '100%',
         float: 'left'
     },
     watch:{
-        width: '15%',
+        width: '20%',
         float: 'right',
     },
     year:{
@@ -86,7 +86,8 @@ class CardDisplayGrossing extends Component {
       return (
       <div >
           <Card className={classes.card}>
-              <CardContent>
+              <CardContent className={{
+              }}>
                   <Typography
                       style={{
                           fontFamily: "futura-heavy"
@@ -94,23 +95,166 @@ class CardDisplayGrossing extends Component {
                       variant="h5" component="h3" className={classes.title} color="textSecondary" gutterBottom>
                       {!(this.props.grossingIdClick || this.props.grossingIdHover)?"Click/Hover to explore more":null}
                   </Typography>
-                  <Container>
+                  
+
                   <div>
                       {this.props.grossingIdHover?
                           <div>
-                              {grossing[this.props.grossingIdHover].title}
-                              {grossing[this.props.grossingIdHover].language}
-                              {grossing[this.props.grossingIdHover].overview}
-                              {grossing[this.props.grossingIdHover].runtime}
-                              {grossing[this.props.grossingIdHover].year}
-                              {grossing[this.props.grossingIdHover].rating}
-                              {grossing[this.props.grossingIdHover].poster}
+                              
+                              <div className={classes.picsum}>
+                                                <div className={classes.pic}>
+                                                    <img align="top" borderColor="white"
+                                                         style={{
+                                                             width: "100%",
+                                                             borderColor: 'rgba(255,255,255,255)',
+                                                             border: '3'
+                                                         }}
+                                                         src=
+                                                         {grossing[this.props.grossingIdHover].poster} alt={grossing[this.props.grossingIdHover].title}/>
+                                                </div>
+                                                <div className={classes.abwatch}  >
+
+                                                    <h3 style={{
+                                                        textDecoration: 'underline',
+                                                        margin: "0",
+                                                        color: "white"
+                                                    }}>{grossing[this.props.grossingIdHover].title}</h3>
+                                                    <div className={classes.about}>
+                                                        <table
+                                                            classes={{borderCollapse: "collapse", borderSpacing: "0"}}
+                                                            style={{width: "100%",textAlign:"left"}}>
+                                                            <col width="20%"></col>
+                                                            <col width="80%"></col>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top">
+                                                                    <b> Language : </b>
+                                                                </td>
+                                                                <td className="tg-qtf5">{grossing[this.props.grossingIdHover].language}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top"><b>Ratings :</b>
+                                                                </td>
+                                                                <td className="tg-qtf5"><ReactStars
+                                                                    value=
+                                                                    {grossing[this.props.grossingIdHover].rating}
+                                                                    edit={false}
+                                                                />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top"><b>Sub-genres :</b>
+                                                                </td>
+                                                                <td className="tg-qtf5">{this.genre}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top"><b>Release Year :</b>
+                                                                </td>
+                                                                <td className="tg-qtf5">{grossing[this.props.grossingIdHover].year}</td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+                                                    <div className={classes.watch}>
+                                                        <IconButton align="right" style={{fontSize: "11pt"}}
+                                                                    onClick={() => this.handleGoogleSearch(this.title)}>
+                                                            Google Search
+                                                            <InfoIcon/>
+                                                        </IconButton>
+                                                    </div>
+                                                </div>
+                                                <div className={classes.summary}>
+                                                    <h3>Summary:</h3>
+                                                    <div style={{fontSize: "1vw"}}>
+                                                    {grossing[this.props.grossingIdHover].overview}
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                              
+                          </div>:this.props.grossingIdClick?<div>
+                          <div>
+                              
+                              <div className={classes.picsum}>
+                                                <div className={classes.pic}>
+                                                    <img align="top" borderColor="white"
+                                                         style={{
+                                                             width: "100%",
+                                                             height: "100%",
+                                                             borderColor: 'rgba(255,255,255,255)',
+                                                             border: '3'
+                                                         }}
+                                                         src=
+                                                         {grossing[this.props.grossingIdClick].poster} alt={grossing[this.props.grossingIdClick].title}/>
+                                                </div>
+                                                <div className={classes.abwatch}>
+
+                                                    <h3 style={{
+                                                        textDecoration: 'underline',
+                                                        margin: "0",
+                                                        color: "white", fontSize: "2vw",
+                                                        display: "inline"
+                                                    }}>{grossing[this.props.grossingIdClick].title}</h3>  
+                                                    <div className={classes.watch}>
+                                                    <IconButton align="right" style={{fontSize: "1vw"}}
+                                                                onClick={() => this.handleGoogleSearch(this.title)}>
+                                                        Google Search
+                                                        <InfoIcon/>
+                                                    </IconButton>
+                                                </div>
+                                                <br />
+                                                    <div className={classes.about}>
+                                                        <table
+                                                            classes={{borderCollapse: "collapse", borderSpacing: "0"}}
+                                                            style={{fontSize:"1vw",textAlign:"left"}}>
+                                                            <col width="30%"></col>
+                                                            <col width="70%"></col>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top">
+                                                                    <b> Language : </b>
+                                                                </td>
+                                                                <td className="tg-qtf5">{grossing[this.props.grossingIdClick].language}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top"><b>Ratings :</b>
+                                                                </td>
+                                                                <td className="tg-qtf5"><ReactStars
+                                                                    value=
+                                                                    {grossing[this.props.grossingIdClick].rating}
+                                                                    edit={false}
+                                                                />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top"><b>Release Year :</b>
+                                                                </td>
+                                                                <td className="tg-qtf5">{grossing[this.props.grossingIdClick].year}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="tg-qtf5" valign="top"><b>Summary :</b>
+                                                                </td>
+                                                                <td className="tg-qtf5">{grossing[this.props.grossingIdClick].overview}</td>
+                                                            </tr>
+                                                            
+                                                        </table>
+
+                                                    </div>
+                                                   
+                                                </div>
+                                                
+
+
+                                            </div>
+                              
+                              
+                             
+                          </div>
                           </div>:null
                       }
 
 
                   </div>
-                  </Container>
+                 
 
 
 
