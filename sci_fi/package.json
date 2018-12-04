@@ -11,15 +11,17 @@
     "chart.js": "^2.7.3",
     "chartjs-plugin-zoom": "^0.6.6",
     "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.6.3",
     "react-radar-chart": "^1.0.21",
     "react-scripts": "2.1.1",
-    "react-stars": "^2.2.5"
+    "react-stars": "^2.2.5",
+    "reactstrap": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build ../docs",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -36,6 +36,7 @@ handleClick(tile,src,title,author,summary,ratings,genre){
      this.props.handleGridClick(src,title,author,summary,ratings,genre)
 }
 handleMouseClick(e){
+    e.target.style.cursor =  'pointer' ;
     e.target.style.opacity = "1"
 }
 handleMouseLeave(e){
