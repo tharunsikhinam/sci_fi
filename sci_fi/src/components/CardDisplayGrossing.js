@@ -125,7 +125,7 @@ class CardDisplayGrossing extends Component {
                                       }}>{grossing[this.props.grossingIdClick].title}</h3>
                                       <div className={classes.watch}>
                                           <IconButton align="right" style={{fontSize: "1vw"}}
-                                                      onClick={() => this.handleGoogleSearch(this.title)}>
+                                                      onClick={() => this.handleGoogleSearch(grossing[this.props.grossingIdClick].title)}>
                                               Google Search&nbsp;
                                               <InfoIcon style={{fontSize: "1vw"}}/>
                                           </IconButton>
@@ -204,7 +204,7 @@ class CardDisplayGrossing extends Component {
                                           }}>{grossing[this.props.grossingIdHover].title}</h3>
                                           <div className={classes.watch}>
                                               <IconButton align="right" style={{fontSize: "1vw"}}
-                                                          onClick={() => this.handleGoogleSearch(this.title)}>
+                                                          onClick={() => this.handleGoogleSearch(grossing[this.props.grossingIdHover].title)}>
                                                   Google Search&nbsp;
                                                   <InfoIcon style={{fontSize: "1vw"}}/>
                                               </IconButton>
